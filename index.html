@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>宮古島 六天五夜</title>
+    <title>東！帶我走～</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -73,7 +73,7 @@
             text-transform: uppercase;
         }
 
-        .day-nav {
+        .day-nav, .sub-nav {
             display: none;
             overflow-x: auto;
             padding: 14px 20px;
@@ -87,10 +87,10 @@
             border-bottom: 1px solid var(--border-light);
         }
 
-        .day-nav::-webkit-scrollbar { display: none; }
+        .day-nav::-webkit-scrollbar, .sub-nav::-webkit-scrollbar { display: none; }
 
-        .day-btn {
-            flex: 0 0 auto;
+        .day-btn, .sub-btn {
+            flex: 1;
             padding: 8px 16px;
             background: white;
             border: 1px solid var(--border-light);
@@ -103,6 +103,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            white-space: nowrap;
         }
 
         .day-btn span.date {
@@ -111,15 +112,15 @@
             margin-top: 2px;
         }
 
-        .day-btn.active {
+        .day-btn.active, .sub-btn.active {
             background: var(--accent-ocean);
             color: white;
             border-color: var(--accent-ocean);
         }
 
         .container { padding: 20px; }
-        .tab-content { display: none; }
-        .tab-content.active {
+        .tab-content, .sub-tab-content { display: none; }
+        .tab-content.active, .sub-tab-content.active {
             display: block;
             animation: fadeIn 0.4s ease-in-out;
         }
@@ -168,6 +169,22 @@
             line-height: 1.6;
             color: var(--text-primary);
         }
+		
+		.checkin-btn {
+			display: inline-block;
+			background-color: #0284c7;
+			color: #ffffff;
+			padding: 6px 10px;
+			text-decoration: none;
+			border-radius: 4px;
+			font-size: 13px;
+			font-weight: bold;
+			transition: background-color 0.2s;
+		}
+
+		.checkin-btn:hover {
+			background-color: #0369a1;
+		}
 
         .info-row {
             display: flex;
@@ -237,7 +254,7 @@
             color: var(--text-secondary);
             line-height: 1.7;
         }
-
+				
         .spot-card {
             background: var(--card-bg);
             border-radius: 8px;
@@ -265,26 +282,9 @@
 			border-radius: 12px;
         }
         
-		.spot-tag {
-			background-color: #e8f5e9;
-			color: #2e7d32;
-			font-size: 12px;
-			padding: 2px 8px;
-			border-radius: 4px;
-			font-weight: 500;
-		}
-
-		.spot-food {
-			background-color: #F3E8FF;
-			color: #6B21A8;
-			font-size: 12px;
-			padding: 2px 8px;
-			border-radius: 4px;
-			font-weight: 500;
-		}
-		
-        .food-tag { color: #C2410C; background: #FFF7ED; }
-        .shop-tag { color: #047857; background: #ECFDF5; }
+		.spot-tag { color: #2E7D32; background: #E8F5E9; border-radius: 4px }
+        .food-tag { color: #C2410C; background: #FFF7ED; border-radius: 4px }
+        .shop-tag { color: #047857; background: #ECFDF5; border-radius: 4px }
 
         .spot-title {
             font-size: 17px;
@@ -309,7 +309,15 @@
         }
 
         .map-link:hover { background: #BAE6FD; }
-
+		
+		.map-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 6px;
+            margin: 12px 0;
+        }
+		
         .spot-img {
             width: 100%;
             height: 160px;
@@ -317,7 +325,12 @@
             border-radius: 6px;
             margin: 12px 0;
         }
-
+		
+        .spot-img.checked {
+            filter: grayscale(100%) brightness(50%);
+            opacity: 0.6;
+        }
+		
         .spot-desc {
             font-size: 13px;
             color: var(--text-secondary);
@@ -342,7 +355,7 @@
 
         .souvenir-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
             margin-bottom: 20px;
         }
@@ -362,10 +375,15 @@
 
         .souvenir-img {
             width: 100%;
-            height: 100px;
+            height: 130px;
             object-fit: cover;
             border-radius: 4px;
             margin-bottom: 6px;
+        }
+		
+        .souvenir-img.checked {
+            filter: grayscale(100%) brightness(50%);
+            opacity: 0.6;
         }
 
         .souvenir-name {
@@ -376,9 +394,9 @@
         }
 
         .hotel-badge {
-            background: var(--text-primary);
+            background: #294769;
             color: white;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
             padding: 12px 16px;
             border-radius: 6px;
@@ -418,6 +436,11 @@
             color: var(--text-primary);
             cursor: pointer;
             flex: 1;
+            transition: all 0.2s ease;
+        }
+        .checkbox-wrapper input[type="checkbox"]:checked + label {
+            color: #94A3B8;
+            text-decoration: line-through;
         }
 
         .calc-card {
@@ -427,28 +450,6 @@
             margin-bottom: 20px;
             border: 1px solid var(--border-light);
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
-        }
-
-        .rate-box {
-            background: #F0F9FF;
-            border: 1px solid #BAE6FD;
-            border-radius: 6px;
-            padding: 12px;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .rate-input {
-            width: 75px;
-            padding: 4px 8px;
-            border: 1px solid var(--border-light);
-            border-radius: 4px;
-            font-size: 13px;
-            text-align: center;
         }
 
         .form-group { margin-bottom: 16px; }
@@ -592,6 +593,20 @@
             font-size: 13px;
         }
 
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .btn-edit { color: var(--accent-ocean); background: #E0F2FE; }
+        .btn-delete { color: #DC2626; background: #FEE2E2; margin-left: 4px; }
+        .btn-edit:hover { background: #BAE6FD; }
+        .btn-delete:hover { background: #FCA5A5; }
+
         .settlement-card {
             background: #F0F9FF;
             border: 1px solid #BAE6FD;
@@ -612,7 +627,7 @@
             border-top: 1px solid var(--border-light);
             display: flex;
             justify-content: space-between;
-            padding: 10px 8px 16px 8px;
+            padding: 10px 4px 16px 4px;
             z-index: 100;
         }
 
@@ -647,74 +662,72 @@
 <body>
 
     <header>
-        <div class="magazine-subtitle">Miyako Blue Travel Journal</div>
+        <div class="magazine-subtitle">Dong Travel Journal</div>
         <div class="header-title">
-            <h1>宮古島 六天五夜 (Demo)</h1>
-            <p>10.21 — 10.26 / Island Escape</p>
+            <h1>東！帶我走～</h1>
+            <p>11.7 — 11.9 / TaiTung GO!</p>
         </div>
     </header>
 
     <div class="day-nav" id="topNav">
-        <button class="day-btn" id="btn-day1" onclick="switchTab('day1')">Day 1<span class="date">10/21 (三)</span></button>
-        <button class="day-btn" id="btn-day2" onclick="switchTab('day2')">Day 2<span class="date">10/22 (四)</span></button>
-        <button class="day-btn" id="btn-day3" onclick="switchTab('day3')">Day 3<span class="date">10/23 (五)</span></button>
-        <button class="day-btn" id="btn-day4" onclick="switchTab('day4')">Day 4<span class="date">10/24 (六)</span></button>
-        <button class="day-btn" id="btn-day5" onclick="switchTab('day5')">Day 5<span class="date">10/25 (日)</span></button>
-        <button class="day-btn" id="btn-day6" onclick="switchTab('day6')">Day 6<span class="date">10/26 (一)</span></button>
+        <button class="day-btn" id="btn-day1" onclick="switchTab('day1')">Day 1<span class="date">11/7 (六)</span></button>
+        <button class="day-btn" id="btn-day2" onclick="switchTab('day2')">Day 2<span class="date">11/8 (日)</span></button>
+        <button class="day-btn" id="btn-day3" onclick="switchTab('day3')">Day 3<span class="date">11/9 (一)</span></button>
+    </div>	
+	
+    <!-- 美食購物次選單 -->
+    <div class="sub-nav" id="foodShopNav">
+        <button class="sub-btn active" id="btn-sub-food" onclick="switchFoodShopTab('food-sub')">美食</button>
+        <button class="sub-btn" id="btn-sub-cafe" onclick="switchFoodShopTab('cafe-sub')">咖啡廳.甜點店</button>
+        <button class="sub-btn" id="btn-sub-shopping" onclick="switchFoodShopTab('shopping-sub')">購物</button>
+        <button class="sub-btn" id="btn-sub-gift" onclick="switchFoodShopTab('gift-sub')">伴手禮</button>
     </div>
-
+	
     <div class="container">
 
         <!-- ===== Home (首頁導覽) ===== -->
         <div id="home" class="tab-content active">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="宮古島渡假海灘" class="home-cover">
+            <img src="images/home-cover.jpg" alt="台東" class="home-cover">
             
             <div class="info-box">
                 <h3>✈️ 航班資訊</h3>
                 <div class="flight-summary">
-                    <b>去程：</b>10/21 (三) 10:40 - 13:00<br>
-                    星宇航空 JX890｜桃園 T1 ➔ 下地島機場<br><br>
-                    <b>回程：</b>10/26 (一) 14:00 - 14:10<br>
-                    星宇航空 JX887｜下地島機場 ➔ 桃園 T1
+                    <b>去程：</b>11/7 (六) 07:35 - 08:40<br>
+                    華信航空 AE391｜松山 ➔ 台東機場<br><br>
+                    <b>回程：</b>11/9 (一) 19:40 - 20:40<br>
+                    華信航空 AE396｜台東機場 ➔ 松山 <br><br>
+					<font color="#3B6899">&nbsp&nbsp**起飛前24-1小時開始報到**</font><br>
                 </div>
             </div>
 
             <div class="info-box">
                 <h3>🚗 交通概覽</h3>
                 <div class="info-row">
-                    <span class="label">宮古島交通方式</span>
+                    <span class="label">台東交通方式</span>
                     <span class="detail">租車自駕 (全程自駕移動)</span>
                 </div>
                 <div class="info-row">
-                    <span class="label">Day 1 台北 ➔ 桃園機場</span>
-                    <span class="detail">信用卡機場送機服務｜07:30 大安區上車</span>
-                </div>
-                <div class="info-row">
-                    <span class="label">Day 6 桃園機場 ➔ 台北</span>
-                    <span class="detail">機場巴士1960｜票價 $200｜班次 15:00 15:40 17:40</span>
+                    <span class="label">松山機場</span>
+                    <span class="detail">自行搭車前往, 起飛前30分鐘報到</span>
                 </div>
             </div>
 
             <div class="info-box">
-                <h3>🏨 宮古島住宿</h3>
+                <h3>🏨 台東住宿</h3>
                 <div class="info-row">
-                    <span class="label">Day 1 - Day 4 住宿</span>
-                    <span class="detail">宮古島市區精選飯店</span>
+                    <span class="label">Day 1 住宿</span>
+                    <span class="detail">娜路彎大酒店</span>
                 </div>
                 <div class="info-row">
-                    <span class="label">Day 5 - Day 6 住宿</span>
-                    <span class="detail">宮古島東急飯店&度假村 (Tokyu Hotel & Resorts)</span>
+                    <span class="label">Day 2 住宿</span>
+                    <span class="detail">日暉國際度假村</span>
                 </div>
-            </div>
-
+            </div>		
             <h3 style="font-size: 14px; letter-spacing: 1px; margin: 20px 0 10px 0; color: var(--accent-ocean);">JOURNAL INDEX / 行程快速入口</h3>
             <div class="quick-links-grid">
-                <div class="quick-link-btn" onclick="switchTab('day1')"><span>Day 1</span><span style="font-size:10px; color:var(--text-secondary);">🛬抵達宮古島</span></div>
-                <div class="quick-link-btn" onclick="switchTab('day2')"><span>Day 2</span><span style="font-size:10px; color:var(--text-secondary);">🏄‍♀️海上活動日</span></div>
-                <div class="quick-link-btn" onclick="switchTab('day3')"><span>Day 3</span><span style="font-size:10px; color:var(--text-secondary);">🚗宮古藍巡禮</span></div>
-                <div class="quick-link-btn" onclick="switchTab('day4')"><span>Day 4</span><span style="font-size:10px; color:var(--text-secondary);">👜伊良部+購物</span></div>
-                <div class="quick-link-btn" onclick="switchTab('day5')"><span>Day 5</span><span style="font-size:10px; color:var(--text-secondary);">⛱東急度假村</span></div>
-                <div class="quick-link-btn" onclick="switchTab('day6')"><span>Day 6</span><span style="font-size:10px; color:var(--text-secondary);">✈️返航台北</span></div>
+                <div class="quick-link-btn" onclick="switchTab('day1')"><span>Day 1</span><span style="font-size:10px; color:var(--text-secondary);">🛬抵達台東</span></div>
+                <div class="quick-link-btn" onclick="switchTab('day2')"><span>Day 2</span><span style="font-size:10px; color:var(--text-secondary);">🏄‍♀️山線巡禮</span></div>
+                <div class="quick-link-btn" onclick="switchTab('day3')"><span>Day 3</span><span style="font-size:10px; color:var(--text-secondary);">🚗市區採買</span></div>
             </div>
 			<br>
             <div class="notice-card">
@@ -727,67 +740,98 @@
             </div>
         </div>
 
-        <!-- ===== Day 1 (10/21 三) ===== -->
+        <!-- ===== Day 1 ===== -->
         <div id="day1" class="tab-content">
+			<div class="spot-card">
+				<div class="spot-header"><span class="spot-time">06:30</span></div>
+                <div class="spot-title">🚗 出發</div>
+                <div class="spot-desc">自行搭車準備前往松山機場囉。</div>
+			</div>
+			<div class="spot-card">
+				<div class="spot-header"><span class="spot-time">07:00</span></div>
+                <div class="spot-title">🚗 抵達松山機場</div>
+                <div class="spot-desc">抵達松山機場，到航空公司櫃檯辦理行李托運準備出境。</div>
+			</div>
+			<div class="spot-card">
+				<div class="spot-header"><span class="spot-time">07:35</span></div>
+                <div class="spot-title">✈️ 飛機起飛</div>
+                <div class="spot-desc">找到座位帶著好心情，準備飛往台東囉。</div>
+			</div>
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">13:00</span>
-                    <a href="https://maps.google.com/?q=Shimojishima+Airport" target="_blank" class="map-link">📍 地圖導航</a>
+                    <span class="spot-time">08:40</span>
+                    <a href="https://maps.app.goo.gl/FGEgbomfLPHPf4yf8" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
-                <div class="spot-title">🛬 抵達下地島機場</div>
-                <img src="images/day/day1-1.jpg" class="spot-img" alt="下地島機場">
-                <div class="spot-desc">順利抵達充滿渡假氛圍的下地島機場，辦理入境並提取行李。</div>
+                <div class="spot-title">🛬 抵達台東機場</div>
+                <img src="images/day/day1-1.jpg" class="spot-img" alt="台東機場">
+                <div class="spot-desc">順利抵達充滿渡假氛圍的台東機場，辦理入境並提取行李。</div>
             </div>
             <div class="spot-card">
                 <div class="spot-header">
                     <span class="spot-time">14:00</span>
-                    <a href="https://maps.google.com/?q=Miyakojima+Car+Rental" target="_blank" class="map-link">📍 地圖導航</a>
+                    <a href="https://maps.app.goo.gl/94VyrS2zV17bE8i46" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🚗 辦理租車取車</div>
                 <img src="images/day/day1-2.jpg" class="spot-img" alt="租車">
-                <div class="spot-desc">搭乘接駁車前往租車門市，確認車況與駕照譯本後開啟自駕之旅。</div>
+                <div class="spot-desc">前往OTSレンタカー下地島空港店，確認車況與駕照譯本後開啟自駕之旅。</div>
             </div>
+			
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">15:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">15:00</span><span class="spot-time spot-tag">景點</span>
+                    <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
+                </div>
+                <div class="spot-title">✈️ 17END (下地島絕景)</div>
+                <img src="images/day/day1-6.jpg" class="spot-img" alt="17END">
+                <div class="spot-desc">位於跑道盡頭的神秘絕景，退潮時呈現夢幻Tiffany藍淺灘，也是近距離看飛機起降的秘境。</div>
+            </div>
+									
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🌉 伊良部大橋</div>
                 <img src="images/day/day1-3.jpg" class="spot-img" alt="伊良部大橋">
                 <div class="spot-desc">全長3,540公尺，跨越極致夢幻的漸層「宮古藍」海洋，體驗如飛馳於海面上的快感。</div>
             </div>
+			
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">16:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">16:30</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Makiyama+Observatory" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🦅 牧山展望台</div>
                 <img src="images/day/day1-4.jpg" class="spot-img" alt="牧山展望台">
                 <div class="spot-desc">位於伊良部島最高點，外型為灰面鷲造型，可全景俯瞰伊良部大橋與宮古本島。</div>
             </div>
+			
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Painagama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🌅 Painagama Beach 海邊散步</div>
                 <img src="images/day/day1-5.jpg" class="spot-img" alt="Painagama Beach">
                 <div class="spot-desc">靠近市區的浪漫沙灘，是欣賞夕陽餘暉與感受在地島嶼慢活步調的首選。</div>
             </div>
+			
             <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-food">美食</span></div>
-                <div class="spot-title">🍽️ 市區在地風味晚餐</div>
-                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80" class="spot-img" alt="市區晚餐">
-                <div class="spot-desc">在平良市區熱鬧街道享用沖繩傳統家常菜與美味阿古豬料理。</div>
+                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
+                    <a href="https://maps.app.goo.gl/mv5Pw5CyhFZufJ3A8" target="_blank" class="map-link">📍 地圖導航</a>
+				</div>
+                <div class="spot-title">🍽️ 宮古牛焼肉 玉城</div>
+                <img src="images/day/day1-dinner.jpg" class="spot-img" alt="宮古牛焼肉 玉城">
+                <div class="spot-desc">該店以一頭買（整頭牛購入）的方式提供極其稀有、被譽為「幻之和牛」的頂級宮古牛，讓饕客可以品嚐到各種珍貴的稀有部位。</div>
             </div>
-            <div class="hotel-badge">🏨 住宿：宮古島市區飯店</div>
+            <div class="hotel-badge">🏨 住宿：娜路彎大酒店</div>
         </div>
 
-        <!-- ===== Day 2 (10/22 四) ===== -->
+        <!-- ===== Day 2 ===== -->
         <div id="day2" class="tab-content">
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">上午 (約3小時)</span><span class="spot-tag">活動</span>
+                    <span class="spot-time">上午 (約3小時)</span><span class="spot-time spot-tag">活動</span>
                     <a href="https://maps.google.com/?q=Yabiji" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🤿 八重干瀨 / 藍洞浮潛</div>
@@ -795,20 +839,20 @@
                 <div class="spot-desc">搭船前往日本最大規模的珊瑚礁群八重干瀨，深入透亮海底與熱帶魚及海龜共遊。</div>
             </div>
             <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-tag">活動</span></div>
+                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-time spot-tag">活動</span></div>
                 <div class="spot-title">🏄‍♂️ SUP 或 獨木舟水上體驗</div>
                 <img src="images/day/day2-2.jpg" class="spot-img" alt="SUP體驗">
                 <div class="spot-desc">站在立槳上滑行於清澈見底的海面上，捕捉令人屏息的海島寫真。</div>
             </div>
             <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-food">美食</span></div>
+                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-time food-tag">美食</span></div>
                 <div class="spot-title">☕ 下午海景咖啡廳</div>
                 <img src="images/day/day2-cafe.jpg" class="spot-img" alt="海景咖啡">
                 <div class="spot-desc">水上活動後找間臨海咖啡館，享受特調芒果飲品與悠揚樂聲。</div>
             </div>
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Higashi+Hennazaki" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🌇 東平安名崎 觀夕</div>
@@ -816,24 +860,24 @@
                 <div class="spot-desc">長達2公里的海蝕岬角，壯麗陡峭的崖壁與浪漫落日餘暉相映成趣。</div>
             </div>
             <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-food">美食</span></div>
+                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span></div>
                 <div class="spot-title">🍻 島居酒屋晚餐</div>
                 <img src="images/day/day2-dinner.jpg" class="spot-img" alt="居酒屋">
                 <div class="spot-desc">沉浸在三線琴演奏與沖繩民謠氛圍中，搭配新鮮海鮮與冰涼啤酒。</div>
             </div>
-            <div class="hotel-badge">🏨 住宿：宮古島市區飯店</div>
+            <div class="hotel-badge">🏨 住宿：日暉國際度假村</div>
         </div>
 
-        <!-- ===== Day 3 (10/23 五) ===== -->
+        <!-- ===== Day 3 ===== -->
         <div id="day3" class="tab-content">
 			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">10:00</span><span class="spot-food">美食</span></div>
+				<div class="spot-header"><span class="spot-time">10:00</span><span class="spot-time food-tag">美食</span></div>
                 <div class="spot-title">🥩 早餐</div>
                 <div class="spot-desc">在飯店附近享用早餐。</div>
 			</div>
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">11:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">11:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Yonaha+Maehama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🏖️ 與那霸前濱海灘</div>
@@ -841,14 +885,16 @@
                 <div class="spot-desc">獲譽為「東洋第一美海灘」，綿延7公里的純白細沙與漸層湛藍海景。</div>
             </div>
 			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">12:00</span><span class="spot-food">美食</span></div>
+				<div class="spot-header"><span class="spot-time">12:00</span><span class="spot-time food-tag">美食</span>
+                    <a href="https://maps.app.goo.gl/q8dNLYSGVyd7xg8N6" target="_blank" class="map-link">📍 地圖導航</a>
+				</div>
                 <div class="spot-title">🥩 HARRY’S Shrimp Truck</div>
                 <img src="images/day/day3-lunch.jpg" class="spot-img" alt="HARRY'S">
                 <div class="spot-desc">享用宮古島蝦蝦飯，邊看海景。</div>
 			</div>
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">14:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">14:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Kurima+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🌉 來間大橋 & 來間島小鎮</div>
@@ -857,7 +903,7 @@
             </div>
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">15:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">15:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Ryugujo+Observatory" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🏯 龍宮城展望台</div>
@@ -866,7 +912,7 @@
             </div>
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">16:00</span><span class="spot-tag">參觀</span>
+                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">參觀</span>
                     <a href="https://maps.google.com/?q=Yukisio+Museum" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">🧂 雪鹽博物館</div>
@@ -875,7 +921,7 @@
             </div>
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-tag">景點</span>
+                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
                     <a href="https://maps.google.com/?q=Sunayama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
                 </div>
                 <div class="spot-title">⛰️ 砂山海灘</div>
@@ -883,395 +929,403 @@
                 <div class="spot-desc">穿越細微沙丘後即可看見由天然海蝕作用形成的經典拱形珊瑚岩海蝕洞。</div>
             </div>
 			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-food">美食</span></div>
+				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
+				</div>
                 <div class="spot-title">🥩 焼肉なかお</div>
                 <img src="images/day/day3-dinner.jpg" class="spot-img" alt="焼肉">
                 <div class="spot-desc">在飯店附近享用晚餐。</div>
 			</div>
-            <div class="hotel-badge">🏨 住宿：宮古島市區飯店</div>
         </div>
 
-        <!-- ===== Day 4 (10/24 六) ===== -->
-        <div id="day4" class="tab-content">
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">11:00</span><span class="spot-food">美食</span></div>
-                <div class="spot-title">🥩 古謝そば屋</div>
-                <img src="images/day/day4-lunch.jpg" class="spot-img" alt="古謝そば屋">
-                <div class="spot-desc">吃當地的十年老店蕎麥麵。</div>
+        <!-- ===== Map (地圖導覽與景點清單) ===== -->
+        <div id="map" class="tab-content">
+            <div class="calc-card">
+                <div class="spot-title" style="margin-bottom: 12px;">
+                    🗺️ 台東導覽地圖
+                    <span class="sync-badge">☁️ 雲端同步</span>
+                </div>
+                <img src="images/map.jpg" class="map-img" alt="台東全圖" style="margin-top: 0;">
+                <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-top: -6px;">(打勾代表已造訪)</p>
+            </div>
+
+            <div class="calc-card">
+                <div class="check-group">
+                    <h4>1. 山線</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_1" onchange="syncMapState('map_1_1')"><label for="map_1_1">1.1. 大坡池(伯朗大道)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_2" onchange="syncMapState('map_1_2')"><label for="map_1_2">1.2. 鹿野半日遊</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_3" onchange="syncMapState('map_1_3')"><label for="map_1_3">1.3. 紅葉谷綠能溫泉</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_4" onchange="syncMapState('map_1_4')"><label for="map_1_4">1.4. 花藞藞玫瑰岩休閒農場(景觀咖啡廳)</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>2. 海線</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_1" onchange="syncMapState('map_2_1')"><label for="map_2_1">2.1. 金剛大道</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_2" onchange="syncMapState('map_2_2')"><label for="map_2_2">2.2. 卡片教堂</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_3" onchange="syncMapState('map_2_3')"><label for="map_2_3">2.3. 成功漁港魚市場</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_4" onchange="syncMapState('map_2_4')"><label for="map_2_4">2.4. 都歷遊客中心</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_5" onchange="syncMapState('map_2_5')"><label for="map_2_5">2.5. 都歷沙灘</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_6" onchange="syncMapState('map_2_6')"><label for="map_2_6">2.6. 金樽遊憩區</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_7" onchange="syncMapState('map_2_7')"><label for="map_2_7">2.7. 海角咖啡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_8" onchange="syncMapState('map_2_8')"><label for="map_2_8">2.8. 富山護魚區</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_9" onchange="syncMapState('map_2_9')"><label for="map_2_9">2.9. 加路蘭海岸</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>3. 市區</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_1" onchange="syncMapState('map_3_1')"><label for="map_3_1">3.1. 台東森林公園</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_2" onchange="syncMapState('map_3_2')"><label for="map_3_2">3.2. 庫空間舊鐵道之旅</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_3" onchange="syncMapState('map_3_3')"><label for="map_3_3">3.3. 台東大學圖書館</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_4" onchange="syncMapState('map_3_4')"><label for="map_3_4">3.4. 俩吆久景觀貨櫃</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_5" onchange="syncMapState('map_3_5')"><label for="map_3_5">3.5. 鐵花村音樂聚落</label></div>
+                </div>
+
+                <div class="check-group">
+                    <h4>4. 自然與冒險的最佳境界！五個互動景點</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_1" onchange="syncMapState('map_4_1')"><label for="map_4_1">4.1. </label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_2" onchange="syncMapState('map_4_2')"><label for="map_4_2">4.2. </label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_3" onchange="syncMapState('map_4_3')"><label for="map_4_3">4.3. </label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_4" onchange="syncMapState('map_4_4')"><label for="map_4_4">4.4. </label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_5" onchange="syncMapState('map_4_5')"><label for="map_4_5">4.5. </label></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== 美食購物 ===== -->
+        <div id="food-shopping" class="tab-content">
+            <!-- 子區塊 1: 美食 -->
+            <div id="food-sub" class="sub-tab-content active">
+                <div class="section-header-title">🍜 餐廳推薦 <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-bottom: -6px;">(點擊圖片標記已完成)</p></div>
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🥩 宮古牛頂級燒肉</span>
+                        <a href="https://maps.google.com/?q=焼肉なかお" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【焼肉なかお】Nakao 宮古牛</div>
+                    <img src="images/food_01.jpg" id="food_01" class="spot-img" alt="宮古牛Nakao" onclick="toggleGiftState('food_01')">
+                    <div class="spot-desc">專賣極品宮古牛燒肉，肉質油花分佈勻稱，燒烤後入口即化。</div>
+                </div>
+
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍜 老字號宮古麵</span>
+                        <a href="https://maps.google.com/?q=古謝そば屋" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【古謝そば屋】蕎麥麵</div>
+                    <img src="images/food_02.jpg" id="food_02" class="spot-img" alt="古謝蕎麥麵屋" onclick="toggleGiftState('food_02')">
+                    <div class="spot-desc">創立數十年的老字號名店，清甜濃郁的柴魚湯頭配上軟嫩三層肉與燉軟骨。</div>
+                </div>
+
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🦀 秘境海鮮</span>					
+                        <a href="https://maps.google.com/?q=海鮮悟空" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【海鮮悟空】椰子蟹</div>
+                    <img src="images/food_03.jpg" id="food_03" class="spot-img" alt="海鮮悟空" onclick="toggleGiftState('food_03')">
+                    <div class="spot-desc">平良市區熱門名店，可品嚐宮古島特色野生椰子蟹料理與極鮮海鮮丼。</div>
+                </div>
+
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍢 當地風味居酒屋</span>
+                        <a href="https://maps.google.com/?q=島おでんたから" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【島おでんたから】居酒屋</div>
+                    <img src="images/food_04.jpg" id="food_04" class="spot-img" alt="島おでんたから" onclick="toggleGiftState('food_04')">
+                    <div class="spot-desc">以燉煮極致入味的島關東煮與香酥豬腳聞名的超高人氣排隊名店。</div>
+                </div>
+
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🦀 蟹肉體驗</span>
+                        <a href="https://maps.google.com/?q=蟹蔵+Miyako" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【蟹蔵】</div>
+                    <img src="images/food_05.jpg" id="food_05" class="spot-img" alt="蟹蔵" onclick="toggleGiftState('food_05')">
+                    <div class="spot-desc">位於伊良部島，提供青蟹紅樹林導覽體驗與新鮮現蒸紅樹林蟹珍饈。</div>
+                </div>
+                
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🚌 美式校車餐車</span>
+                        <a href="https://maps.google.com/?q=HARRY’S+Shrimp+Truck" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【HARRY’S Shrimp Truck】奶油蒜蝦飯</div>
+                    <img src="images/food_06.jpg" id="food_06" class="spot-img" alt="Blue Turtle Farm Mango Cafe" onclick="toggleGiftState('food_06')">
+                    <div class="spot-desc">主打各式蝦蝦飯，美式校車、藍綠色半露天座位，再加上海岸景色，很有宮古島獨有的悠閒感。</div>
+                </div>
+				
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍜 宮古麵</span>
+                        <a href="https://maps.app.goo.gl/uRfEmToixCsJzgbH9" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【港食堂ニュー浜や】New Hamaya 宮古麵</div>
+                    <img src="images/food_07.jpg" id="food_07" class="spot-img" alt="港食堂ニュー浜や" onclick="toggleGiftState('food_07')">
+                    <div class="spot-desc">打破傳統宮古麵僅用豬骨和柴魚熬湯的印象，這裡加入了蜆（文蛤）、鯖魚、昆布、香菇等熬製出層次豐富的「黃金湯頭」。</div>
+                </div>
+				
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍜 在地小店</span>
+                        <a href="https://maps.app.goo.gl/rWELmknJVFQtJBiz7" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【炭火麺屋 市】宮古蕎麥麵</div>
+                    <img src="images/food_08.jpg" id="food_08" class="spot-img" alt="炭火麺屋 市" onclick="toggleGiftState('food_08')">
+                    <div class="spot-desc">主打兼具在地風味與百元等級高性價比的宮古島蕎麥麵（宮古そば）與自慢炭火燒鳥（烤雞串）。</div>
+                </div>
+				
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍜 頂級涮涮鍋</span>
+                        <a href="https://maps.app.goo.gl/eMiwSV1x4Nu75eyG6" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【燦伊良部島店】豬肉涮涮鍋</div>
+                    <img src="images/food_09.jpg" id="food_09" class="spot-img" alt="燦伊良部島店" onclick="toggleGiftState('food_09')">
+                    <div class="spot-desc">午餐：以宮古蕎麥麵（宮古そば）為核心。
+                <br>晚餐：主打使用宮古鄉里牛與阿古豬、鳳梨豬等三種沖繩在地產名豬的頂級涮涮鍋與壽喜燒。(晚餐要提早一天訂位)</div>
+                </div>
+            </div>
+
+            <!-- 子區塊 2: 咖啡廳.甜點 -->
+            <div id="cafe-sub" class="sub-tab-content">
+                <div class="section-header-title">☕︎ 咖啡廳.甜點店 <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-bottom: -6px;">(點擊圖片標記已完成)</p></div>
+                <div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🥭 芒果海景咖啡</span>
+                        <a href="https://maps.app.goo.gl/iZpQqZcSEtgffSag6" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【Blue Turtle】芒果冰沙</div>
+                    <img src="images/cafe_01.jpg" id="cafe_01" class="spot-img" alt="Blue Turtle" onclick="toggleGiftState('cafe_01')">
+                    <div class="spot-desc">自設農場直送新鮮芒果，搭配無敵海景享受濃郁芒果冰沙與精緻甜點。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">🍕 海景義式餐廳</span>
+                        <a href="https://maps.app.goo.gl/1vZ9SrM3AqkgMzcG7" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【Gelato Cafe Ninufa】</div>
+                    <img src="images/cafe_02.jpg" id="cafe_02" class="spot-img" alt="Gelato Cafe Ninufa" onclick="toggleGiftState('cafe_02')">
+                    <div class="spot-desc">在池間島的絕景中享用正統義式冰淇淋與義式披薩。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 海景隱密風咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/QdBLkSHGkeyTHqoP6" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【LOCO MANGER】宮古牛漢堡排</div>
+                    <img src="images/cafe_03.jpg" id="cafe_03" class="spot-img" alt="LOCO MANGER" onclick="toggleGiftState('cafe_03')">
+                    <div class="spot-desc">可眺望宮古島藍色海洋與伊良部島的絕美咖啡館，由出身法式料理的資深主廚主理，使用宮古島與沖繩當地食材。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 手沖咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/nppZWTLdTFGKCqg36" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【Ningin Coffee】黑糖拿鐵</div>
+                    <img src="images/cafe_04.jpg" id="cafe_04" class="spot-img" alt="Ningin Coffee" onclick="toggleGiftState('cafe_04')">
+                    <div class="spot-desc">店主為每位客人親手手沖咖啡，從磨豆、悶蒸到注水的每一個節奏都恰到好處，主推巴斯克和紅豆奶油吐司，紅豆不會過於甜膩，搭配鹹奶油，好日式的下午茶。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 早午餐咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/w4M8MGUcvANj9CVT8" target="_blank" class="map-link">📍 地圖導航</a></div>
+                    <div class="spot-title">【LB CAFE】法式吐司套餐</div>
+                    <img src="images/cafe_05.jpg" id="cafe_05" class="spot-img" alt="LB CAFE" onclick="toggleGiftState('cafe_05')">
+                    <div class="spot-desc">這裡以充滿海島度假風的舒適木質裝潢、美味的早午餐點，以及店外經典的天使翅膀打卡牆而聞名。</div>
+                </div>
+            </div>
+
+            <!-- 子區塊 3: 購物 -->
+            <div id="shopping-sub" class="sub-tab-content">
+                <div class="section-header-title">🛍️ 必逛購物地點</div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">鹽業主題</span>
+                        <a href="https://maps.google.com/?q=Yukisio+Museum" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">雪塩博物館</div>
+                    <img src="images/shop/shop_01.jpg" class="spot-img" alt="雪塩博物館">
+                    <div class="spot-desc">認識極細雪鹽製程，現場販售多元雪鹽商品、美妝品及招牌雪鹽霜淇淋。</div>
+                </div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">折扣百貨</span>
+                        <a href="https://maps.google.com/?q=Don+Quijote+Miyakojima" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">唐吉訶德 宮古島店</div>
+                    <img src="images/shop/shop_02.jpg" class="spot-img" alt="唐吉訶德">
+                    <div class="spot-desc">營業至深夜的大型賣場，一次採買齊全沖繩限定藥妝、零食與各類生活雜貨。</div>
+                </div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">生鮮超市</span>
+                        <a href="https://maps.google.com/?q=MaxValu+Miyako+Minami" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">永旺宮古南購物中心 AEON TOWN</div>
+                    <img src="images/shop/shop_03.jpg" class="spot-img" alt="MaxValu超市">
+                    <div class="spot-desc">集結24H超市、藥妝、服飾與餐廳的綜合商圈，停車極為便利。</div>
+                </div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">文青選物</span>
+                        <a href="https://maps.google.com/?q=Cross+Point+Market+Miyakojima" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">Cross Point Market</div>
+                    <img src="images/shop/shop_04.jpg" class="spot-img" alt="Cross Point Market">
+                    <div class="spot-desc">嚴選沖繩與宮古島質感雜貨、文創伴手禮、特色服飾及精緻紀念品。</div>
+                </div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">歷史商街</span>
+                        <a href="https://maps.google.com/?q=Nishizato+Street" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">西里大通街</div>
+                    <img src="images/shop/shop_05.jpg" class="spot-img" alt="西里大通街">
+                    <div class="spot-desc">市區熱鬧的商店街，集結在地手工藝品店、泡盛酒專賣店與特色居酒屋。</div>
+                </div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">農特產集散</span>
+                        <a href="https://maps.google.com/?q=Shima+no+Eki+Miyako" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">島之站宮古（島の駅みやこ）</div>
+                    <img src="images/shop/shop_06.jpg" class="spot-img" alt="島之站宮古">
+                    <div class="spot-desc">當地居民與遊客最愛的特產市場，產地直送新鮮芒果、火龍果與各種海島抹醬。</div>
+                </div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">生活雜貨</span>
+                        <a href="https://maps.google.com/?q=MUJI+Miyakojima+City" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">無印良品 宮古島City店</div>
+                    <img src="images/shop/shop_07.jpg" class="spot-img" alt="無印良品宮古島">
+                    <div class="spot-desc">宮古島首家無印良品門市，極簡舒適空間，適合補給服飾、保養品與旅行雜物。</div>
+                </div>
+
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">百元均一</span>
+                        <a href="https://maps.google.com/?q=DAISO+Miyako+Minami" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">大創 DAISO 宮古南SC店</div>
+                    <img src="images/shop/shop_08.jpg" class="spot-img" alt="DAISO">
+                    <div class="spot-desc">品項齊全的百元商店，補充海邊玩水小物、收納袋與超值日本生活用品。</div>
+                </div>
+                
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">香蕉伴手禮</span>
+                        <a href="https://maps.google.com/?q=Monte+Doll+Miyako" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">Monte Doll (モンテドール)</div>
+                    <img src="images/shop/shop_09.jpg" class="spot-img" alt="Monte Doll">
+                    <div class="spot-desc">宮古島飄香數十年的經典伴手禮，使用天然香蕉烘焙，口感紮實濃郁。。</div>
+                </div>
+                
+                <div class="spot-card shopping">
+                    <div class="spot-header">
+                        <span class="spot-time shop-tag">機場限定</span>
+                        <a href="https://maps.google.com/?q=coral+port+the+Shop+Shimojishima" target="_blank" class="map-link">📍 地圖導航</a>
+                    </div>
+                    <div class="spot-title">下地島機場 coral port the Shop</div>
+                    <img src="images/shop/shop_10.jpg" class="spot-img" alt="coral port the Shop">
+                    <div class="spot-desc">渡假風質感航廈商店，販售獨家聯名商品、時尚配件與搭機前的特色紀念品。</div>
+                </div>
 			</div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">11:00</span><span class="spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Toriike+Pond" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌀 通池</div>
-                <img src="images/day/day4-2.jpg" class="spot-img" alt="通池">
-                <div class="spot-desc">日本國家指定天然紀念物，兩個圓形池塘在水下相通並直連大海，散發深邃神秘氣息。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">13:30</span><span class="spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=17END" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">✈️ 17END (下地島絕景)</div>
-                <img src="images/day/day4-1.jpg" class="spot-img" alt="17END">
-                <div class="spot-desc">位於跑道盡頭的神秘絕景，退潮時呈現夢幻Tiffany藍淺灘，也是近距離看飛機起降的秘境。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">15:00</span><span class="spot-food">美食</span></div>
-                <div class="spot-title">🥩 蟹藏</div>
-                <img src="images/day/day4-food.jpg" class="spot-img" alt="蟹藏">
-                <div class="spot-desc">提供青蟹紅樹林導覽體驗與新鮮現蒸紅樹林蟹珍饈。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Sawada+Beach" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🪨 佐和田之濱</div>
-                <img src="images/day/day4-3.jpg" class="spot-img" alt="佐和田之濱">
-                <div class="spot-desc">入選「日本海灘百選」，海面上散落著1771年大地震海嘯留下的無數巨大岩石。</div>
-            </div>
-            <div class="spot-card shopping">
-                <div class="spot-header"><span class="spot-time shop-tag">採買行程</span></div>
-                <div class="spot-title">🛍️ 宮古島購物血拼巡禮</div>
-                <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?auto=format&fit=crop&w=600&q=80" class="spot-img" alt="購物">
-                <div class="spot-desc">
-                    • <b>島之驛宮古</b>：伴手禮、在地水果<br>
-                    • <b>唐吉訶德 Don Quijote</b>：藥妝、零食<br>
-                    • <b>AEON 超市</b>：日本當季水果、日用品
-                </div>
-            </div>
-            <div class="hotel-badge">🏨 住宿：宮古島市區飯店</div>
-        </div>
-
-        <!-- ===== Day 5 (10/25 日) ===== -->
-        <div id="day5" class="tab-content">
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">10:00</span></div>
-                <div class="spot-title">🏨 市區飯店退房</div>
-                <div class="spot-desc">收拾行李準備前往東急渡假村，體驗宮古島的度假感。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">11:00</span><span class="spot-food">美食</span></div>
-                <div class="spot-title">🥩 午餐</div>
-                <div class="spot-desc">在市區享用美味午餐。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">14:00</span>
-                    <a href="https://maps.google.com/?q=Miyako+Tokyu+Hotel" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🏨 宮古島東急飯店&度假村</div>
-                <img src="images/day/day5-3.jpg" class="spot-img" alt="東急度假村">
-                <div class="spot-desc">享受奢華的海島放鬆時間！飯店直通與那霸前濱海灘，享受私人泳池、SPA與花園散步。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">15:00</span></div>
-                <div class="spot-title">☀️ 渡假村私人泳池</div>
-                <img src="images/day/day5-4.jpg" class="spot-img" alt="渡假村私人泳池">
-                <div class="spot-desc">享受渡假村泳池。</div>
-            </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">17:00</span></div>
-                <div class="spot-title">☀️ 沙灘走走看夕陽</div>
-                <div class="spot-desc">在飯店外沙灘走走拍照，享受夕陽美景。</div>
-            </div>
-            <div class="spot-card">
-				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-food">美食</span></div>
-                <div class="spot-title">🍷 渡假村奢華晚宴</div>
-                <img src="images/day/day5-dinner.jpg" class="spot-img" alt="渡假村晚餐">
-                <div class="spot-desc">在飯店附設主廚餐廳品嚐高品質宮古牛燒肉或精致法式料理，為旅程畫下美好句點。</div>
-            </div>
-            <div class="hotel-badge">🏨 住宿：宮古島東急飯店&度假村</div>
-        </div>
-
-        <!-- ===== Day 6 (10/26 一) ===== -->
-        <div id="day6" class="tab-content">
-            <div class="spot-card">
-				<div class="spot-header"><span class="spot-time">9:00</span></div>
-                <div class="spot-title">☀️ 晨間悠閒時刻與退房</div>
-                <img src="images/day/day6-1.jpg" class="spot-img" alt="渡假村早餐">
-                <div class="spot-desc">享受渡假村最後一頓早餐，漫步沙灘並辦理退房手續。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">11:00</span></div>
-                <div class="spot-title">🚗 歸還租車</div>
-                <div class="spot-desc">前往租車公司加滿油歸還車輛，搭乘接駁專車前往下地島機場。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">11:30</span></div>
-                <div class="spot-title">🛍️ 下地島機場美食購物</div>
-                <img src="images/day/day6-2.jpg" class="spot-img" alt="下地島機場餐廳">
-                <div class="spot-desc">下地島機場享用午餐，悠閒採購機場伴手禮。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">14:00</span></div>
-                <div class="spot-title">✈️ 星宇航空 飛抵台北</div>
-                <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=600&q=80" class="spot-img" alt="返航">
-                <div class="spot-desc">14:00 由下地島起飛，預計 14:10 順利抵達桃園國際機場第一航廈。</div>
-            </div>
-        </div>
-
-        <!-- ===== Food ===== -->
-        <div id="food" class="tab-content">
-            <div class="spot-card food">
-                <div class="spot-header">
-					<span class="spot-time food-tag">🥩 宮古牛頂級燒肉</span>
-					<a href="https://maps.google.com/?q=焼肉なかお" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">【焼肉なかお】Nakao 宮古牛</div>
-                <img src="images/food_01.jpg" class="spot-img" alt="宮古牛Nakao">
-                <div class="spot-desc">專賣極品宮古牛燒肉，肉質油花分佈勻稱，燒烤後入口即化。</div>
-            </div>
-
-            <div class="spot-card food">
-                <div class="spot-header">
-					<span class="spot-time food-tag">🍜 老字號宮古麵</span>
-					<a href="https://maps.google.com/?q=古謝そば屋" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">【古謝そば屋】蕎麥麵</div>
-                <img src="images/food_02.jpg" class="spot-img" alt="古謝蕎麥麵屋">
-                <div class="spot-desc">創立數十年的老字號名店，清甜濃郁的柴魚湯頭配上軟嫩三層肉與燉軟骨。</div>
-            </div>
-
-            <div class="spot-card food">
-                <div class="spot-header">
-					<span class="spot-time food-tag">🦀 秘境海鮮</span>					
-					<a href="https://maps.google.com/?q=海鮮悟空" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">【海鮮悟空】椰子蟹</div>
-                <img src="images/food_03.jpg" class="spot-img" alt="海鮮悟空">
-                <div class="spot-desc">平良市區熱門名店，可品嚐宮古島特色野生椰子蟹料理與極鮮海鮮丼。</div>
-            </div>
-
-            <div class="spot-card food">
-                <div class="spot-header">
-					<span class="spot-time food-tag">🍢 當地風味居酒屋</span>
-					<a href="https://maps.google.com/?q=島おでんたから" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">【島おでんたから】居酒屋</div>
-                <img src="images/food_04.jpg" class="spot-img" alt="島おでんたから">
-                <div class="spot-desc">以燉煮極致入味的島關東煮與香酥豬腳聞名的超高人氣排隊名店。</div>
-            </div>
-
-            <div class="spot-card food">
-                <div class="spot-header">
-					<span class="spot-time food-tag">🦀 蟹肉體驗</span>
-					<a href="https://maps.google.com/?q=蟹蔵+Miyako" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">【蟹蔵】</div>
-                <img src="images/food_05.jpg" class="spot-img" alt="蟹蔵">
-                <div class="spot-desc">位於伊良部島，提供青蟹紅樹林導覽體驗與新鮮現蒸紅樹林蟹珍饈。</div>
-            </div>
-
-            <div class="spot-card food">
-                <div class="spot-header">
-					<span class="spot-time food-tag">🥭 芒果海景咖啡</span>
-					<a href="https://maps.google.com/?q=Blue+Farm+Mango+Cafe" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">【Blue Turtle Farm Mango Café】芒果冰沙</div>
-                <img src="images/food_06.jpg" class="spot-img" alt="Blue Turtle Farm Mango Cafe">
-                <div class="spot-desc">自設農場直送新鮮芒果，搭配無敵海景享受濃郁芒果冰沙與精緻甜點。</div>
-            </div>
 			
-            <div class="spot-card food">
-                <div class="spot-header">
-					<span class="spot-time food-tag">🚌 美式校車餐車</span>
-					<a href="https://maps.google.com/?q=HARRY’S+Shrimp+Truck" target="_blank" class="map-link">📍 地圖導航</a></div>
-                <div class="spot-title">【HARRY’S Shrimp Truck】奶油蒜蝦飯</div>
-                <img src="images/food_07.jpg" class="spot-img" alt="Blue Turtle Farm Mango Cafe">
-                <div class="spot-desc">主打各式蝦蝦飯，美式校車、藍綠色半露天座位，再加上海岸景色，很有宮古島獨有的悠閒感。</div>
-            </div>
-        </div>
-
-        <!-- ===== Shopping ===== -->
-        <div id="shopping" class="tab-content">
-            <div class="section-header-title">🛍️ 必逛購物地點</div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">鹽業主題</span>
-                    <a href="https://maps.google.com/?q=Yukisio+Museum" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">雪塩博物館</div>
-                <img src="images/shop_01.jpg" class="spot-img" alt="雪塩博物館">
-                <div class="spot-desc">認識極細雪鹽製程，現場販售多元雪鹽商品、美妝品及招牌雪鹽霜淇淋。</div>
-            </div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">折扣百貨</span>
-                    <a href="https://maps.google.com/?q=Don+Quijote+Miyakojima" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">唐吉訶德 宮古島店</div>
-                <img src="images/shop_02.jpg" class="spot-img" alt="唐吉訶德">
-                <div class="spot-desc">營業至深夜的大型賣場，一次採買齊全沖繩限定藥妝、零食與各類生活雜貨。</div>
-            </div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">生鮮超市</span>
-                    <a href="https://maps.google.com/?q=MaxValu+Miyako+Minami" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">永旺宮古南購物中心 AEON TOWN</div>
-                <img src="images/shop_03.jpg" class="spot-img" alt="MaxValu超市">
-                <div class="spot-desc">集結24H超市、藥妝、服飾與餐廳的綜合商圈，停車極為便利。</div>
-            </div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">文青選物</span>
-                    <a href="https://maps.google.com/?q=Cross+Point+Market+Miyakojima" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">Cross Point Market</div>
-                <img src="images/shop_04.jpg" class="spot-img" alt="Cross Point Market">
-                <div class="spot-desc">嚴選沖繩與宮古島質感雜貨、文創伴手禮、特色服飾及精緻紀念品。</div>
-            </div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">歷史商街</span>
-                    <a href="https://maps.google.com/?q=Nishizato+Street" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">西里大通街</div>
-                <img src="images/shop_05.jpg" class="spot-img" alt="西里大通街">
-                <div class="spot-desc">市區熱鬧的商店街，集結在地手工藝品店、泡盛酒專賣店與特色居酒屋。</div>
-            </div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">農特產集散</span>
-                    <a href="https://maps.google.com/?q=Shima+no+Eki+Miyako" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">島之站宮古（島の駅みやこ）</div>
-                <img src="images/shop_06.jpg" class="spot-img" alt="島之站宮古">
-                <div class="spot-desc">當地居民與遊客最愛的特產市場，產地直送新鮮芒果、火龍果與各種海島抹醬。</div>
-            </div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">生活雜貨</span>
-                    <a href="https://maps.google.com/?q=MUJI+Miyakojima+City" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">無印良品 宮古島City店</div>
-                <img src="images/shop_07.jpg" class="spot-img" alt="無印良品宮古島">
-                <div class="spot-desc">宮古島首家無印良品門市，極簡舒適空間，適合補給服飾、保養品與旅行雜物。</div>
-            </div>
-
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">百元均一</span>
-                    <a href="https://maps.google.com/?q=DAISO+Miyako+Minami" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">大創 DAISO 宮古南SC店</div>
-                <img src="images/shop_08.jpg" class="spot-img" alt="DAISO">
-                <div class="spot-desc">品項齊全的百元商店，補充海邊玩水小物、收納袋與超值日本生活用品。</div>
-            </div>
-			
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">香蕉伴手禮</span>
-                    <a href="https://maps.google.com/?q=Monte+Doll+Miyako" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">Monte Doll (モンテドール)</div>
-                <img src="images/shop_09.jpg" class="spot-img" alt="Monte Doll">
-                <div class="spot-desc">宮古島飄香數十年的經典伴手禮，使用天然香蕉烘焙，口感紮實濃郁。。</div>
-            </div>
-			
-            <div class="spot-card shopping">
-                <div class="spot-header">
-                    <span class="spot-time shop-tag">機場限定</span>
-                    <a href="https://maps.google.com/?q=coral+port+the+Shop+Shimojishima" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">下地島機場 coral port the Shop</div>
-                <img src="images/shop_10.jpg" class="spot-img" alt="coral port the Shop">
-                <div class="spot-desc">渡假風質感航廈商店，販售獨家聯名商品、時尚配件與搭機前的特色紀念品。</div>
-            </div>
-
-            <div class="section-header-title">🎁 必買伴手禮推薦</div>
-            <div class="souvenir-grid">
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_01.jpg" class="souvenir-img" alt="雪鹽白巧克力夾心餅">
-                    <div class="souvenir-name">1. 雪鹽白巧克力餅</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_02.jpg" class="souvenir-img" alt="雪鹽法蘭酥">
-                    <div class="souvenir-name">2. 雪鹽法蘭酥</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_03.jpg" class="souvenir-img" alt="雪鹽薯條">
-                    <div class="souvenir-name">3. 雪鹽薯條</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_04.jpg" class="souvenir-img" alt="雪鹽費南雪">
-                    <div class="souvenir-name">4. 雪鹽費南雪</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_05.jpg" class="souvenir-img" alt="雪鹽費南雪">
-                    <div class="souvenir-name">5. 雪鹽金楚糕</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_06.jpg" class="souvenir-img" alt="雪鹽年輪蛋糕">
-                    <div class="souvenir-name">6. 雪鹽年輪蛋糕</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_07.jpg" class="souvenir-img" alt="雪鹽調味料">
-                    <div class="souvenir-name">7. 雪鹽調味料</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_08.jpg" class="souvenir-img" alt="雪鹽汽水">
-                    <div class="souvenir-name">8. 宮古島雪鹽汽水</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_09.jpg" class="souvenir-img" alt="雪鹽肥皂">
-                    <div class="souvenir-name">9. 宮古島雪鹽肥皂</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_10.jpg" class="souvenir-img" alt="紅芋塔">
-                    <div class="souvenir-name">10. 紅芋塔 / 紅薯塔</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_11.jpg" class="souvenir-img" alt="Monte Doll香蕉蛋糕">
-                    <div class="souvenir-name">11. Monte Doll香蕉蛋糕</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_12.jpg" class="souvenir-img" alt="芒果夾心餅乾">
-                    <div class="souvenir-name">12. 芒果夾心餅乾</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_13.jpg" class="souvenir-img" alt="宮古島堅果">
-                    <div class="souvenir-name">13. 宮古島堅果酥</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_14.jpg" class="souvenir-img" alt="守護君周邊">
-                    <div class="souvenir-name">14. 守護君周邊商品</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_15.jpg" class="souvenir-img" alt="宮古島帆布袋">
-                    <div class="souvenir-name">15. 宮古島帆布袋</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_16.jpg" class="souvenir-img" alt="宮古島磁鐵">
-                    <div class="souvenir-name">16. 宮古島磁鐵</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_17.jpg" class="souvenir-img" alt="特色T-shirt">
-                    <div class="souvenir-name">17. 宮古島 T-shirt</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_18.jpg" class="souvenir-img" alt="Blue Seal周邊">
-                    <div class="souvenir-name">18. Blue Seal 冰淇淋</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_19.jpg" class="souvenir-img" alt="Orion周邊">
-                    <div class="souvenir-name">19. Orion 周邊商品</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_20.jpg" class="souvenir-img" alt="曬黑 Hello Kitty">
-                    <div class="souvenir-name">20. 曬黑 Hello Kitty</div>
-                </div>
-                <div class="souvenir-card">
-                    <img src="images/gift/gift_21.jpg" class="souvenir-img" alt="Hydro Flask水壺">
-                    <div class="souvenir-name">21. 下地島 Hydro Flask</div>
+			<!-- 子區塊 4: 伴手禮 -->
+            <div id="gift-sub" class="sub-tab-content">
+                <div class="section-header-title">🎁 伴手禮推薦 <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-bottom: -6px;">(點擊圖片標記已買到)</p></div>
+				
+                <div class="souvenir-grid">
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_01.jpg" id="gift_1" class="souvenir-img" alt="台東米乖乖" onclick="toggleGiftState('gift_1')">
+                        <div class="souvenir-name">1. 台東米乖乖</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_02.jpg" id="gift_2" class="souvenir-img" alt="青澤琪瑪酥" onclick="toggleGiftState('gift_2')">
+                        <div class="souvenir-name">2. 青澤琪瑪酥</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_03.jpg" id="gift_3" class="souvenir-img" alt="雨田家馬卡龍" onclick="toggleGiftState('gift_3')">
+                        <div class="souvenir-name">3. 雨田家馬卡龍</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_04.jpg" id="gift_4" class="souvenir-img" alt="楊記家傳地瓜酥" onclick="toggleGiftState('gift_4')">
+                        <div class="souvenir-name">4. 楊記家傳地瓜酥</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_05.jpg" id="gift_5" class="souvenir-img" alt="陳記麻糬" onclick="toggleGiftState('gift_5')">
+                        <div class="souvenir-name">5. 陳記麻糬</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_06.jpg" id="gift_6" class="souvenir-img" alt="歐巴螞釋迦餅" onclick="toggleGiftState('gift_6')">
+                        <div class="souvenir-name">6. 歐巴螞釋迦餅</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_07.jpg" id="gift_7" class="souvenir-img" alt="東河包子" onclick="toggleGiftState('gift_7')">
+                        <div class="souvenir-name">7. 東河包子</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_08.jpg" id="gift_8" class="souvenir-img" alt="曼貫砲GrandslameS" onclick="toggleGiftState('gift_8')">
+                        <div class="souvenir-name">8. 曼貫砲GrandslameS洋芋片</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_09.jpg" id="gift_9" class="souvenir-img" alt="老東芳青草茶" onclick="toggleGiftState('gift_9')">
+                        <div class="souvenir-name">9. 老東芳青草茶</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_10.jpg" id="gift_10" class="souvenir-img" alt="紅芋塔" onclick="toggleGiftState('gift_10')">
+                        <div class="souvenir-name">10. 紅芋塔 / 紅薯塔</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_11.jpg" id="gift_11" class="souvenir-img" alt="Monte Doll香蕉蛋糕" onclick="toggleGiftState('gift_11')">
+                        <div class="souvenir-name">11. Monte Doll香蕉蛋糕</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_12.jpg" id="gift_12" class="souvenir-img" alt="芒果夾心餅乾" onclick="toggleGiftState('gift_12')">
+                        <div class="souvenir-name">12. 芒果夾心餅乾</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_13.jpg" id="gift_13" class="souvenir-img" alt="宮古島堅果" onclick="toggleGiftState('gift_13')">
+                        <div class="souvenir-name">13. 宮古島堅果酥</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_14.jpg" id="gift_14" class="souvenir-img" alt="守護君周邊" onclick="toggleGiftState('gift_14')">
+                        <div class="souvenir-name">14. 守護君周邊商品</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_15.jpg" id="gift_15" class="souvenir-img" alt="宮古島帆布袋" onclick="toggleGiftState('gift_15')">
+                        <div class="souvenir-name">15. 宮古島帆布袋</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_16.jpg" id="gift_16" class="souvenir-img" alt="宮古島磁鐵" onclick="toggleGiftState('gift_16')">
+                        <div class="souvenir-name">16. 宮古島磁鐵</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_17.jpg" id="gift_17" class="souvenir-img" alt="特色T-shirt" onclick="toggleGiftState('gift_17')">
+                        <div class="souvenir-name">17. 宮古島 T-shirt</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_18.jpg" id="gift_18" class="souvenir-img" alt="Blue Seal周邊" onclick="toggleGiftState('gift_18')">
+                        <div class="souvenir-name">18. Blue Seal 冰淇淋</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_19.jpg" id="gift_19" class="souvenir-img" alt="Orion周邊" onclick="toggleGiftState('gift_19')">
+                        <div class="souvenir-name">19. Orion 周邊商品</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_20.jpg" id="gift_20" class="souvenir-img" alt="曬黑 Hello Kitty" onclick="toggleGiftState('gift_20')">
+                        <div class="souvenir-name">20. 曬黑 Hello Kitty</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_21.jpg" id="gift_21" class="souvenir-img" alt="Hydro Flask水壺" onclick="toggleGiftState('gift_21')">
+                        <div class="souvenir-name">21. 下地島 Hydro Flask</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_22.jpg" id="gift_21" class="souvenir-img" alt="Hydro Flask水壺" onclick="toggleGiftState('gift_22')">
+                        <div class="souvenir-name">22. 下地島 Hydro Flask</div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- ===== Shared Split Expense Tool (升級分帳) ===== -->
+		
+        <!-- ===== Shared Split Expense Tool (升級分帳 - 台幣國內旅遊版) ===== -->
         <div id="calc" class="tab-content">
             <div class="calc-card">
                 <div class="spot-title" style="margin-bottom: 10px;">
@@ -1285,13 +1339,8 @@
                 </div>
             </div>
 
-            <div class="calc-card">
-                <div class="spot-title" style="margin-bottom: 12px;">💰 新增消費記帳</div>
-
-                <div class="rate-box">
-                    <span>💱 匯率 (JPY ➔ TWD)</span>
-                    <div>1 日幣 = <input type="number" id="exchangeRate" class="rate-input" value="0.215" step="0.001" onchange="updateExpenseUI()"> 台幣</div>
-                </div>
+            <div class="calc-card" id="formCard">
+                <div class="spot-title" id="formTitle" style="margin-bottom: 12px;">💰 新增消費記帳</div>
 
                 <div class="form-group">
                     <label>消費日期</label>
@@ -1300,15 +1349,19 @@
 
                 <div class="form-group">
                     <label>消費項目名稱</label>
-                    <input type="text" id="expName" class="form-control" placeholder="例如：古謝そば麵、個人藥妝">
+                    <input type="text" id="expName" class="form-control" placeholder="例如：米苔目晚餐、伴手禮">
                 </div>
 
+                <div class="form-group">
+                    <label>總金額 (TWD)</label>
+                    <input type="number" id="expAmount" class="form-control" placeholder="例如：1200" oninput="onTotalAmountInput()">
+                </div>
+				
                 <div class="form-group">
                     <label>誰先付款？</label>
                     <div id="payerRadioGrid" class="checkbox-group-grid"></div>
                 </div>
 
-                <!-- 分攤模式切換 -->
                 <div class="form-group">
                     <label>分攤方式</label>
                     <div class="split-type-selector">
@@ -1316,36 +1369,22 @@
                         <button type="button" class="split-type-btn" id="btnModeCustom" onclick="setSplitMode('custom')">✏️ 按個人金額</button>
                     </div>
                 </div>
-				
-                <div class="form-group">
-                    <label>幣別</label>
-                    <select id="expCurrency" class="form-control" onchange="onCurrencyChange()">
-                        <option value="JPY" selected>JPY (日幣)</option>
-                        <option value="TWD">TWD (台幣)</option>
-                    </select>
-                </div>
-				
-                <div class="form-group" id="totalAmountGroup">
-                    <label id="labelTotalAmount">總金額 (JPY)</label>
-                    <input type="number" id="expAmount" class="form-control" placeholder="例如：4500" oninput="onTotalAmountInput()">
-                </div>
-				
-                <!-- 均分模式：勾選成員 -->
+								
                 <div class="form-group" id="equalSplitGroup">
                     <label>分攤成員 (勾選)</label>
                     <div id="membersCheckboxGrid" class="checkbox-group-grid"></div>
                 </div>
 
-                <!-- 自訂金額模式：顯示各成員金額輸入 -->
                 <div class="form-group" id="customSplitGroup" style="display: none;">
-                    <label id="labelCustomAmount">分攤成員與獨立金額 (JPY)</label>
+                    <label id="labelCustomAmount">分攤成員與獨立金額 (TWD)</label>
                     <div id="customShareList" class="custom-share-list"></div>
                     <div style="font-size: 12px; color: var(--accent-ocean); font-weight: bold; margin-top: 6px; text-align: right;" id="customTotalSum">
-                        合計金額：¥0
+                        合計金額：NT$0
                     </div>
                 </div>
 
                 <button class="btn-primary" id="btnAddExp" onclick="saveExpense()">➕ 儲存並同步至雲端</button>
+                <button type="button" id="btnCancelEdit" onclick="cancelEdit()" style="display:none; width: 100%; margin-top: 8px; padding: 10px; background: #94A3B8; color: white; border: none; border-radius: 6px; font-size: 13px; cursor: pointer;">取消編輯</button>
             </div>
 
             <div class="calc-card">
@@ -1362,33 +1401,46 @@
             </div>
         </div>
 
-        <!-- ===== Checklist ===== -->
+        <!-- ===== 準備 ===== -->
         <div id="checklist" class="tab-content">
             <div class="calc-card">
-                <div class="spot-title" style="margin-bottom: 16px;">✅ 行前與隨身 CHECKLIST</div>
+                <div class="spot-title" style="margin-bottom: 16px;">📌 行前準備</div>
+				
+                <div class="check-group">
+                    <h4>行前準備事項</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="a1"><label for="a1">機票</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="a2"><label for="a2">訂房 (飯店 / 民宿)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="a3"><label for="a3">機場接送服務</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="a4"><label for="a4">旅行平安險 / 旅行不便險</label></div>
+                </div>
+				
+                <div class="spot-title" style="margin-bottom: 16px;">✅ 行李 CHECKLIST</div>
                 
                 <div class="check-group">
                     <h4>重要證件與卡片</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c1"><label for="c1">護照 (效期6個月以上)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c2"><label for="c2">台灣駕照正本 + 日文譯本</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c3"><label for="c3">Visit Japan Web QR Code 截圖</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c4"><label for="c4">信用卡 / 日幣現金</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_1"><label for="c1_1">身分證 / 健保卡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_2"><label for="c1_2">台灣駕照正本</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_4"><label for="c1_4">信用卡 / 台幣現金</label></div>
                 </div>
 
                 <div class="check-group">
                     <h4>水上活動與穿搭</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c5"><label for="c5">泳衣 / 水母衣 / 防曬衣</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c6"><label for="c6">防水袋 / 手機防水套</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c7"><label for="c7">海灘鞋</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c8"><label for="c8">海洋友善防曬乳 / 太陽眼鏡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_1"><label for="c2_1">泳衣 / 水母衣 / 防曬衣</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_2"><label for="c2_2">防水袋 / 手機防水套</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_3"><label for="c2_3">海灘鞋</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_4"><label for="c2_4">海洋友善防曬乳 / 太陽眼鏡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_5"><label for="c2_5">毛巾 / 浴巾</label></div>
                 </div>
 
                 <div class="check-group">
-                    <h4>電子產品與常備藥</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c9"><label for="c9">行動電源 / 充電線</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c10"><label for="c10">日本 eSIM / SIM 卡 / 漫遊</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c11"><label for="c11">暈船藥 / 個人常備藥品</label></div>
+                    <h4>個人用品及電子產品</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_1"><label for="c3_1">行動電源 / 充電線</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_3"><label for="c3_3">暈車藥 / 個人常備藥品</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_4"><label for="c3_4">換洗衣物</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_5"><label for="c3_5">保養品</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c3_6"><label for="c3_6">牙膏 / 牙刷</label></div>
                 </div>
+				
             </div>
         </div>
 
@@ -1404,13 +1456,13 @@
             <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
             行程
         </button>
-        <button class="bottom-nav-btn" id="bnav-food" onclick="switchTab('food')">
+        <button class="bottom-nav-btn" id="bnav-map" onclick="switchTab('map')">
+			<svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.89 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+			地圖
+		</button>
+        <button class="bottom-nav-btn" id="bnav-food-shopping" onclick="switchTab('food-shopping')">
             <svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.46 3.9 3.45 4.35V21h3v-7.65c1.99-.45 3.45-2.23 3.45-4.35V2h-2v7zm7-7h-1c-2.21 0-4 1.79-4 4v7h2v8h3V2z"/></svg>
-            美食
-        </button>
-        <button class="bottom-nav-btn" id="bnav-shopping" onclick="switchTab('shopping')">
-            <svg viewBox="0 0 24 24"><path d="M18 6h-2c0-2.21-1.79-4-4-4S8 3.79 8 6H6c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-6-2c1.1 0 2 .9 2 2H10c0-1.1.9-2 2-2zm6 16H6V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h4v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z"/></svg>
-            購物
+            美食購物
         </button>
         <button class="bottom-nav-btn" id="bnav-calc" onclick="switchTab('calc')">
             <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
@@ -1418,14 +1470,14 @@
         </button>
         <button class="bottom-nav-btn" id="bnav-checklist" onclick="switchTab('checklist')">
             <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-9 14l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-            Checklist
+            準備
         </button>
     </div>
 
     <script>
         const API_URL = "https://script.google.com/macros/s/AKfycbwSjpq2gqhooEQn9M8-E_3QbatAoQjvug5EK7qSjIw2gJj2PDSdbyLZ3u00IbzYSJCx/exec";
 
-        document.getElementById('expDate').value = '2026-10-21';
+        document.getElementById('expDate').value = '2026-11-07';
 
         function switchTab(tabId) {
             const contents = document.querySelectorAll('.tab-content');
@@ -1437,37 +1489,137 @@
             document.querySelectorAll('.bottom-nav-btn').forEach(b => b.classList.remove('active'));
 
             const topNav = document.getElementById('topNav');
+            const foodShopNav = document.getElementById('foodShopNav');
             const dayBtns = document.querySelectorAll('.day-btn');
             dayBtns.forEach(btn => btn.classList.remove('active'));
 
             if (tabId.startsWith('day')) {
                 topNav.style.display = 'flex';
+                foodShopNav.style.display = 'none';
                 const dayBtn = document.getElementById('btn-' + tabId);
                 if (dayBtn) {
                     dayBtn.classList.add('active');
                     dayBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
                 document.getElementById('bnav-schedule').classList.add('active');
+			} else if (tabId === 'food-shopping') {
+                topNav.style.display = 'none';
+                foodShopNav.style.display = 'flex';
+                document.getElementById('bnav-food-shopping').classList.add('active');
             } else {
                 topNav.style.display = 'none';
+                foodShopNav.style.display = 'none';
                 if (document.getElementById('bnav-' + tabId)) {
                     document.getElementById('bnav-' + tabId).classList.add('active');
                 }
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+		
+		function switchFoodShopTab(subTabId) {
+            const subContents = document.querySelectorAll('.sub-tab-content');
+            subContents.forEach(c => c.classList.remove('active'));
 
-        let members = ['王小明', '李小雯'];
+            const target = document.getElementById(subTabId);
+            if (target) target.classList.add('active');
+
+            const subBtns = document.querySelectorAll('.sub-btn');
+            subBtns.forEach(b => b.classList.remove('active'));
+
+            if (subTabId === 'food-sub') {
+                document.getElementById('btn-sub-food').classList.add('active');
+            } else if (subTabId === 'cafe-sub') {
+                document.getElementById('btn-sub-cafe').classList.add('active');
+            } else if (subTabId === 'shopping-sub') {
+                document.getElementById('btn-sub-shopping').classList.add('active');
+            } else if (subTabId === 'gift-sub') {
+                document.getElementById('btn-sub-gift').classList.add('active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ===== 地圖 Spot 與 伴手禮 雲端同步邏輯 (Sheet: MAP) ===== */
+        async function fetchMapStateFromCloud() {
+            try {
+                let res = await fetch(`${API_URL}?targetSheet=MAP`);
+                let data = await res.json();
+                if (Array.isArray(data)) {
+                    data.forEach(item => {
+                        const isChecked = (item.checked === true || item.checked === "true");
+                        if (item.id && (item.id.startsWith('gift_') || item.id.startsWith('food_') || item.id.startsWith('cafe_'))) {
+                            const imgEl = document.getElementById(item.id);
+                            if (imgEl) {
+                                if (isChecked) imgEl.classList.add('checked');
+                                else imgEl.classList.remove('checked');
+                            }
+                        } else {
+                            const el = document.getElementById(item.id);
+                            if (el) el.checked = isChecked;
+                        }
+                    });
+                }
+            } catch (e) {
+                console.error("讀取地圖/伴手禮點位雲端資料失敗:", e);
+            }
+        }
+
+        async function syncMapState(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const payload = {
+                targetSheet: "MAP",
+                id: id,
+                checked: el.checked
+            };
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (e) {
+                console.error("更新地圖點位狀態失敗:", e);
+            }
+        }
+		
+        async function toggleGiftState(id) {
+            const imgEl = document.getElementById(id);
+            if (!imgEl) return;
+            
+            imgEl.classList.toggle('checked');
+            const isChecked = imgEl.classList.contains('checked');
+
+            const payload = {
+                targetSheet: "MAP",
+                id: id,
+                checked: isChecked
+            };
+
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (e) {
+                console.error("更新伴手禮狀態失敗:", e);
+            }
+        }
+
+        // 初始化讀取雲端狀態
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchMapStateFromCloud();
+            fetchExpensesFromCloud();
+            renderMembersUI();
+        });
+
+        let members = ['Andy', 'Pink', 'Lillian', 'Tina'];
         let expenses = [];
         let currentSplitMode = 'equal'; 
         let manualCustomMembers = new Set();
-
-        function onCurrencyChange() {
-            const curr = document.getElementById('expCurrency').value;
-            document.getElementById('labelTotalAmount').innerText = `總金額 (${curr})`;
-            document.getElementById('labelCustomAmount').innerText = `分攤成員與獨立金額 (${curr})`;
-            calcCustomTotal();
-        }
+        let editingRow = null;
 
         function setSplitMode(mode) {
             currentSplitMode = mode;
@@ -1493,7 +1645,7 @@
             try {
                 let res = await fetch(API_URL);
                 let data = await res.json();
-                expenses = data.map(item => {
+                expenses = data.map((item, index) => {
                     let parsedShares = null;
                     if (item.shares) {
                         try {
@@ -1504,8 +1656,9 @@
                     }
                     return {
                         ...item,
+                        row: item.row || (index + 2),
                         amount: Number(item.amount),
-                        currency: item.currency || 'JPY', 
+                        currency: 'TWD', 
                         members: typeof item.members === 'string' ? item.members.split(',') : item.members,
                         shares: parsedShares
                     };
@@ -1639,9 +1792,7 @@
                     if (!isNaN(val)) sum += val;
                 }
             });
-            const curr = document.getElementById('expCurrency').value;
-            const symbol = curr === 'JPY' ? '¥' : 'NT$';
-            document.getElementById('customTotalSum').innerText = `合計金額：${symbol}${Math.round(sum).toLocaleString()}`;
+            document.getElementById('customTotalSum').innerText = `合計金額：NT$${Math.round(sum).toLocaleString()}`;
             return sum;
         }
 
@@ -1668,7 +1819,6 @@
 		async function saveExpense() {
             const date = document.getElementById('expDate').value;
             const name = document.getElementById('expName').value.trim();
-            const currency = document.getElementById('expCurrency').value;
             const payerEl = document.querySelector('input[name="payerRadio"]:checked');
             const payer = payerEl ? payerEl.value : '';
 
@@ -1708,14 +1858,16 @@
 
             const btn = document.getElementById('btnAddExp');
             btn.disabled = true;
-            btn.innerText = "⏳ 上傳雲端中...";
+            btn.innerText = editingRow ? "⏳ 修改同步中..." : "⏳ 上傳雲端中...";
 
-            const newRecord = {
-                action: "add",
+            const payload = {
+				targetSheet: "EXPENSES",
+                action: editingRow ? "edit" : "add",
+                row: editingRow,
                 date,
                 name,
                 amount: totalAmount,
-                currency: currency, 
+                currency: "TWD", 
                 payer,
                 members: selectedMembers.join(','),
                 shares: Object.keys(sharesObj).length > 0 ? JSON.stringify(sharesObj) : ""
@@ -1726,21 +1878,113 @@
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(newRecord)
+                    body: JSON.stringify(payload)
                 });
 
-                alert('新增成功！正在更新資料...');
+                alert(editingRow ? '修改成功！正在更新資料...' : '新增成功！正在更新資料...');
                 clearForm();
                 setTimeout(fetchExpensesFromCloud, 1000);
             } catch (e) {
                 console.error(e);
-                alert('上傳失敗，請檢查網路！');
+                alert('處理失敗，請檢查網路！');
             } finally {
                 btn.disabled = false;
-                btn.innerText = "➕ 儲存並同步至雲端";
             }
         }
-		
+
+        function editExpense(idx) {
+            const item = expenses[idx];
+            if (!item) return;
+
+            editingRow = item.row;
+            document.getElementById('formTitle').innerText = '✏️ 修改消費記帳';
+            document.getElementById('btnAddExp').innerText = '💾 儲存修改並同步至雲端';
+            document.getElementById('btnCancelEdit').style.display = 'block';
+
+            if (item.date) {
+                let dateObj = new Date(item.date);
+				if (!isNaN(dateObj.getTime())) {
+					let year = dateObj.getFullYear();
+					let month = String(dateObj.getMonth() + 1).padStart(2, '0');
+					let day = String(dateObj.getDate()).padStart(2, '0');
+					document.getElementById('expDate').value = `${year}-${month}-${day}`;
+				} else {
+					document.getElementById('expDate').value = item.date.toString().split('T')[0];
+				}
+            }
+            
+            document.getElementById('expName').value = item.name;
+            document.getElementById('expAmount').value = item.amount;
+
+            const memList = Array.isArray(item.members) ? item.members : item.members.split(',');
+            memList.forEach(m => {
+                if (!members.includes(m)) members.push(m);
+            });
+            if (item.payer && !members.includes(item.payer)) members.push(item.payer);
+            renderMembersUI();
+
+            const payerRadio = document.querySelector(`input[name="payerRadio"][value="${item.payer}"]`);
+            if (payerRadio) payerRadio.checked = true;
+
+            if (item.shares && Object.keys(item.shares).length > 0) {
+                setSplitMode('custom');
+                manualCustomMembers.clear();
+                members.forEach(m => {
+                    const cb = document.querySelector(`input[name="customCheck"][value="${m}"]`);
+                    const inp = document.getElementById(`customInput_${m}`);
+                    if (item.shares[m] !== undefined) {
+                        if (cb) cb.checked = true;
+                        if (inp) {
+                            inp.disabled = false;
+                            inp.value = item.shares[m];
+                            inp.classList.remove('is-auto');
+                            inp.classList.add('is-manual');
+                        }
+                        manualCustomMembers.add(m);
+                    } else {
+                        if (cb) cb.checked = false;
+                        if (inp) {
+                            inp.disabled = true;
+                            inp.value = '';
+                        }
+                    }
+                });
+                calcCustomTotal();
+            } else {
+                setSplitMode('equal');
+                document.querySelectorAll('input[name="splitCheck"]').forEach(cb => {
+                    cb.checked = memList.includes(cb.value);
+                });
+            }
+
+            document.getElementById('formCard').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        async function deleteExpense(idx) {
+            const item = expenses[idx];
+            if (!item) return;
+
+            if (!confirm(`確定要刪除「${item.name}」這筆消費紀錄嗎？`)) return;
+
+            try {
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        targetSheet: "EXPENSES",
+                        action: "delete",
+                        row: item.row
+                    })
+                });
+                alert('已刪除帳目！正在更新資料...');
+                setTimeout(fetchExpensesFromCloud, 1000);
+            } catch (e) {
+                console.error(e);
+                alert('刪除失敗！');
+            }
+        }
+
         async function clearAllData() {
             const password = prompt('請輸入清空帳目密碼：');
             if (password === null) return; 
@@ -1755,7 +1999,7 @@
                         method: 'POST',
                         mode: 'no-cors',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ action: "clear" })
+                        body: JSON.stringify({ targetSheet: "EXPENSES", action: "clear" })
                     });
                     setTimeout(fetchExpensesFromCloud, 1000);
                 } catch (e) {
@@ -1764,144 +2008,142 @@
             }
         }
 
+        function cancelEdit() {
+            clearForm();
+        }
+
         function clearForm() {
+            editingRow = null;
+            document.getElementById('formTitle').innerText = '💰 新增消費記帳';
+            document.getElementById('btnAddExp').innerText = '➕ 儲存並同步至雲端';
+            document.getElementById('btnCancelEdit').style.display = 'none';
             document.getElementById('expName').value = '';
             document.getElementById('expAmount').value = '';
-            document.getElementById('expCurrency').value = 'JPY'; 
-            onCurrencyChange();
-            
             manualCustomMembers.clear();
-            members.forEach(m => {
-                const inp = document.getElementById(`customInput_${m}`);
-                if (inp) {
-                    inp.value = '';
-                    inp.classList.remove('is-manual');
-                    inp.classList.add('is-auto');
-                }
-            });
-            document.querySelectorAll('input[name="splitCheck"]').forEach(cb => cb.checked = true);
-            document.querySelectorAll('input[name="customCheck"]').forEach(cb => {
-                cb.checked = true;
-                toggleCustomInput(cb.value);
-            });
-            recalcCustomShares();
+            setSplitMode('equal');
+            renderMembersUI();
         }
-		
-        function updateExpenseUI() {
-            const listContainer = document.getElementById('expenseList');
-            const rate = parseFloat(document.getElementById('exchangeRate').value) || 0.215;
-            listContainer.innerHTML = '';
 
+        function updateExpenseUI() {
+            const listEl = document.getElementById('expenseList');
             if (expenses.length === 0) {
-                listContainer.innerHTML = '(目前尚無紀錄)';
-                document.getElementById('settlementDetails').innerHTML = '尚無消費紀錄。';
+                listEl.innerHTML = '<div style="color:var(--text-secondary); text-align:center; padding:12px 0;">尚無消費紀錄</div>';
+                document.getElementById('settlementDetails').innerText = '尚無消費紀錄。';
                 return;
             }
 
-            expenses.sort((a, b) => new Date(a.date) - new Date(b.date));
-            let balances = {}; // 內部統一以 TWD 進行結算與計算
+            let html = '';
+            let balances = {};
+            members.forEach(m => balances[m] = 0);
 
-            expenses.forEach((item) => {
-                const curr = item.currency || 'JPY';
-                const memList = Array.isArray(item.members) ? item.members : item.members.split(',');
+            expenses.forEach((item, idx) => {
+                const totalTWD = item.amount;
+                const payer = item.payer;
+                const splitMembers = Array.isArray(item.members) ? item.members : item.members.split(',');
                 
-                let amountInTwd = 0;
-                let displayMain = '';
-                let displaySub = '';
+                if (balances[payer] === undefined) balances[payer] = 0;
+                balances[payer] += totalTWD;
 
-                if (curr === 'JPY') {
-                    displayMain = `¥${item.amount.toLocaleString()}`;
-                    displaySub = `≈ NT$${Math.round(item.amount * rate).toLocaleString()}`;
-                    amountInTwd = item.amount * rate; // 換算成 TWD 計算
-                } else {
-                    displayMain = `NT$${item.amount.toLocaleString()}`;
-                    displaySub = ''; 
-                    amountInTwd = item.amount; // TWD 直接計算
-                }
-                
-                let shareDetailStr = '';
+                let detailDesc = '';
+
                 if (item.shares && Object.keys(item.shares).length > 0) {
-                    const parts = [];
-                    const sym = curr === 'JPY' ? '¥' : 'NT$';
-                    for (let m in item.shares) {
-                        parts.push(`${m}: ${sym}${item.shares[m]}`);
-                    }
-                    shareDetailStr = `獨立分攤 (${parts.join(', ')})`;
+                    let shareStrs = [];
+                    Object.keys(item.shares).forEach(m => {
+                        const mAmount = item.shares[m];
+                        if (balances[m] === undefined) balances[m] = 0;
+                        balances[m] -= mAmount;
+                        shareStrs.push(`${m}: $${Math.round(mAmount)}`);
+                    });
+                    detailDesc = shareStrs.join(', ');
                 } else {
-                    shareDetailStr = `均分: ${memList.join(', ')}`;
+                    const shareCount = splitMembers.length;
+                    const perShareTWD = shareCount > 0 ? (totalTWD / shareCount) : 0;
+                    splitMembers.forEach(m => {
+                        if (balances[m] === undefined) balances[m] = 0;
+                        balances[m] -= perShareTWD;
+                    });
+                    detailDesc = `均分: ${splitMembers.join(', ')} ( $${Math.round(perShareTWD)}/人)`;
                 }
 
-                let formattedDate = item.date || '未指定日期';
+                let displayDate = item.date;
                 if (item.date) {
-                    let cleanDateStr = item.date.toString().split('T')[0].split(' ')[0];
-                    formattedDate = cleanDateStr.replace(/-/g, '/');
+                    let dateObj = new Date(item.date);
+                    if (!isNaN(dateObj.getTime())) {
+						let year = dateObj.getFullYear();
+                        let month = dateObj.getMonth() + 1;
+                        let day = dateObj.getDate();
+                        displayDate = `${year}/${month}/${day}`;
+                    } else {
+                        displayDate = item.date.toString().split('T')[0];
+                    }
                 }
 
-                const div = document.createElement('div');
-                div.className = 'expense-list-item';
-                div.innerHTML = `
-                    <div>
-                        <span style="font-size:11px; font-weight:700; color:var(--accent-ocean); display:block;">📅 ${formattedDate}</span>
-                        <b style="font-size:14px; color:var(--text-primary);">${item.name}</b> 
-                        <span style="font-size:12px; color:var(--text-secondary);">(${item.payer} 先付)</span><br>
-                        <span style="color:var(--text-secondary); font-size:11px;">${shareDetailStr}</span>
-                    </div>
-                    <div style="text-align:right;">
-                        <div style="font-weight:700; color:var(--text-primary);">${displayMain}</div>
-                        <div style="font-size:11px; color:var(--text-secondary);">${displaySub}</div>
+                html += `
+                    <div class="expense-list-item">
+                        <div>
+							<div style="font-size:11px; font-weight:700; color:var(--accent-ocean); display:block;">📅 ${displayDate}</div>
+                            <div style="font-weight:700; color:var(--text-primary); font-size:14px;">${item.name}
+                            <span style="font-size:11px; color:var(--text-secondary); margin-top:2px;"> (${payer} 先付)</span>
+                            </div>
+                            <div style="font-size:11px; color:#0284C7; margin-top:2px;">
+                                👥 ${detailDesc}
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-weight:700; color:var(--accent-ocean); font-size:14px;">
+                                $${Math.round(totalTWD).toLocaleString()}
+                            </div>
+                            <div style="margin-top:4px;">
+                                <button class="action-btn btn-edit" onclick="editExpense(${idx})">編輯</button>
+                                <button class="action-btn btn-delete" onclick="deleteExpense(${idx})">刪除</button>
+                            </div>
+                        </div>
                     </div>
                 `;
-                listContainer.appendChild(div);
-
-                balances[item.payer] = (balances[item.payer] || 0) + amountInTwd;
-                if (item.shares && Object.keys(item.shares).length > 0) {
-                    for (let m in item.shares) {
-                        let shareInTwd = curr === 'JPY' ? item.shares[m] * rate : item.shares[m];
-                        balances[m] = (balances[m] || 0) - shareInTwd;
-                    }
-                } else {
-                    const perPerson = amountInTwd / memList.length;
-                    memList.forEach(m => {
-                        balances[m] = (balances[m] || 0) - perPerson;
-                    });
-                }
             });
 
-            const settlementDetails = document.getElementById('settlementDetails');
-            let creditors = [];
-            let debtors = [];
-
-            for (let person in balances) {
-                if (balances[person] > 0.1) {
-                    creditors.push({ name: person, amount: balances[person] });
-                } else if (balances[person] < -0.1) {
-                    debtors.push({ name: person, amount: -balances[person] });
-                }
-            }
-
-            let settlementText = '';
-            debtors.forEach(d => {
-                creditors.forEach(c => {
-                    if (d.amount > 0 && c.amount > 0) {
-                        let transferTwd = Math.min(d.amount, c.amount);
-                        let equivalentJpy = Math.round(transferTwd / rate);
-                        settlementText += `
-                            <div style="font-size:13px; font-weight:500; color:var(--text-primary); margin-bottom:6px;">
-                                👉 <b>${d.name}</b> 應支付給 <b>${c.name}</b>：<br>
-                                <span style="font-size:15px; font-weight:700; color:var(--accent-ocean);">NT$${Math.round(transferTwd).toLocaleString()}</span>
-                                <span style="font-size:12px; color:var(--text-secondary);"> (約 ¥${equivalentJpy.toLocaleString()})</span>
-                            </div>`;
-                        d.amount -= transferTwd;
-                        c.amount -= transferTwd;
-                    }
-                });
-            });
-
-            settlementDetails.innerHTML = settlementText || '目前帳目已完全平衡！';
+            listEl.innerHTML = html;
+            calculateSettlement(balances);
         }
 
-        renderMembersUI();
-        fetchExpensesFromCloud();
+        function calculateSettlement(balances) {
+            let debtors = [];
+            let creditors = [];
+
+            Object.keys(balances).forEach(m => {
+                let bal = Math.round(balances[m]);
+                if (bal < -1) {
+                    debtors.push({ name: m, amount: -bal });
+                } else if (bal > 1) {
+                    creditors.push({ name: m, amount: bal });
+                }
+            });
+
+            if (debtors.length === 0 && creditors.length === 0) {
+                document.getElementById('settlementDetails').innerHTML = '🎉 所有帳目已結清！無人需支付或收取費用。';
+                return;
+            }
+
+            let transactions = [];
+            let dIdx = 0;
+            let cIdx = 0;
+
+            while (dIdx < debtors.length && cIdx < creditors.length) {
+                let debtor = debtors[dIdx];
+                let creditor = creditors[cIdx];
+                let transferAmount = Math.min(debtor.amount, creditor.amount);
+
+                transactions.push(`<b>${debtor.name}</b> 應給 <b>${creditor.name}</b> ： <span style="color:#B45309; font-weight:bold;">$${Math.round(transferAmount).toLocaleString()}</span>`);
+
+                debtor.amount -= transferAmount;
+                creditor.amount -= transferAmount;
+
+                if (debtor.amount <= 1) dIdx++;
+                if (creditor.amount <= 1) cIdx++;
+            }
+
+            document.getElementById('settlementDetails').innerHTML = transactions.join('<br>') || '尚無明確的結算轉帳路徑。';
+        }
     </script>
 </body>
 </html>
