@@ -9,15 +9,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #F0F9FF;
+            /* 台東藍主題色調 */
+            --bg-main: #E0F2FE;
             --card-bg: #FFFFFF;
-            --text-primary: #0F172A;
-            --text-secondary: #475569;
+            --text-primary: #0C4A6E;
+            --text-secondary: #0369A1;
             --accent-ocean: #0284C7;
             --accent-sky: #38BDF8;
-            --accent-gold: #B45309;
-            --border-light: #E2E8F0;
-            --tag-bg: #E0F2FE;
+            --accent-deep: #075985;
+            --border-light: #BAE6FD;
+            --tag-bg: #F0F9FF;
         }
 
         * {
@@ -320,7 +321,7 @@
 		
         .spot-img {
             width: 100%;
-            height: 160px;
+            height: 170px;
             object-fit: cover;
             border-radius: 6px;
             margin: 12px 0;
@@ -670,9 +671,9 @@
     </header>
 
     <div class="day-nav" id="topNav">
-        <button class="day-btn" id="btn-day1" onclick="switchTab('day1')">Day 1<span class="date">11/7 (六)</span></button>
-        <button class="day-btn" id="btn-day2" onclick="switchTab('day2')">Day 2<span class="date">11/8 (日)</span></button>
-        <button class="day-btn" id="btn-day3" onclick="switchTab('day3')">Day 3<span class="date">11/9 (一)</span></button>
+        <button class="day-btn" id="btn-day1" onclick="switchTab('day1')">Day 1<span class="date">東海岸網美海景日</span></button>
+        <button class="day-btn" id="btn-day2" onclick="switchTab('day2')">Day 2<span class="date">伯朗大道＋三仙台</span></button>
+        <button class="day-btn" id="btn-day3" onclick="switchTab('day3')">Day 3<span class="date">南迴海景療癒日</span></button>
     </div>	
 	
     <!-- 美食購物次選單 -->
@@ -725,17 +726,17 @@
             </div>		
             <h3 style="font-size: 14px; letter-spacing: 1px; margin: 20px 0 10px 0; color: var(--accent-ocean);">JOURNAL INDEX / 行程快速入口</h3>
             <div class="quick-links-grid">
-                <div class="quick-link-btn" onclick="switchTab('day1')"><span>Day 1</span><span style="font-size:10px; color:var(--text-secondary);">🛬抵達台東</span></div>
-                <div class="quick-link-btn" onclick="switchTab('day2')"><span>Day 2</span><span style="font-size:10px; color:var(--text-secondary);">🏄‍♀️山線巡禮</span></div>
-                <div class="quick-link-btn" onclick="switchTab('day3')"><span>Day 3</span><span style="font-size:10px; color:var(--text-secondary);">🚗市區採買</span></div>
+                <div class="quick-link-btn" onclick="switchTab('day1')"><span>Day 1</span><span style="font-size:10px; color:var(--text-secondary);">🌊 東海岸網美</span></div>
+                <div class="quick-link-btn" onclick="switchTab('day2')"><span>Day 2</span><span style="font-size:10px; color:var(--text-secondary);">🌾 縱谷與海線</span></div>
+                <div class="quick-link-btn" onclick="switchTab('day3')"><span>Day 3</span><span style="font-size:10px; color:var(--text-secondary);">♨️ 南迴與溫泉</span></div>
             </div>
 			<br>
             <div class="notice-card">
                 <h4>💡 旅行小提醒</h4>
                 <ul class="notice-list">
-                    <li>10月下旬秋季海風漸強，海況多變，請依當日天氣彈性調整水上活動。</li>
-                    <li>準備防曬用品、薄外套、防刮膠鞋、防水袋與個人藥品。</li>
-                    <li>日本自駕請注意靠左行駛、遵循速限並確實禮讓行人。</li>
+                    <li>台東海岸線日照強烈，請做好防曬並隨時補充水分。</li>
+                    <li>海邊拍攝（如都歷沙灘天空之鏡）請留意潮汐與海浪安全。</li>
+                    <li>伯朗大道區域限制一般汽車進入，建議租用腳踏車輕鬆遊覽。</li>
                 </ul>
             </div>
         </div>
@@ -752,118 +753,194 @@
                 <div class="spot-title">🚗 抵達松山機場</div>
                 <div class="spot-desc">抵達松山機場，到航空公司櫃檯辦理行李托運準備出境。</div>
 			</div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">07:35</span></div>
-                <div class="spot-title">✈️ 飛機起飛</div>
-                <div class="spot-desc">找到座位帶著好心情，準備飛往台東囉。</div>
-			</div>
             <div class="spot-card">
                 <div class="spot-header">
                     <span class="spot-time">08:40</span>
-                    <a href="https://maps.app.goo.gl/FGEgbomfLPHPf4yf8" target="_blank" class="map-link">📍 地圖導航</a>
+                    <a href="https://maps.app.goo.gl/FGEgbomfLPHPf4yf8" target="_blank" class="map-link">📍 地圖</a>
                 </div>
                 <div class="spot-title">🛬 抵達台東機場</div>
                 <img src="images/day/day1-1.jpg" class="spot-img" alt="台東機場">
                 <div class="spot-desc">順利抵達充滿渡假氛圍的台東機場，辦理入境並提取行李。</div>
             </div>
+			<div class="spot-card">
+                <div class="spot-header"><span class="spot-time">09:30</span></div>
+                <div class="spot-title">🚗 租車完成</div>
+                <div class="spot-desc">完成手續取車，行李放車上，直接出發！</div>
+            </div>
+
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">14:00</span>
-                    <a href="https://maps.app.goo.gl/94VyrS2zV17bE8i46" target="_blank" class="map-link">📍 地圖導航</a>
+                    <span class="spot-time">10:00</span><span class="spot-time spot-tag">停留約45分鐘</span>
+                    <a href="https://maps.google.com/?q=台東大學圖書館" target="_blank" class="map-link">📍 地圖</a>
                 </div>
-                <div class="spot-title">🚗 辦理租車取車</div>
-                <img src="images/day/day1-2.jpg" class="spot-img" alt="租車">
-                <div class="spot-desc">前往OTSレンタカー下地島空港店，確認車況與駕照譯本後開啟自駕之旅。</div>
+                <div class="spot-title">📚 台東大學圖書館</div>
+                <img src="images/day/day1-2.jpg" class="spot-img" alt="台東大學圖書館">
+                <div class="spot-desc">全台最美圖書館之一，金字塔綠建築造型超好拍。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">11:00</span><span class="spot-time spot-tag">停留約40分鐘</span>
+                    <a href="https://maps.google.com/?q=小野柳" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🪨 小野柳</div>
+                <img src="images/day/day1-3.jpg" class="spot-img" alt="小野柳">
+                <div class="spot-desc">欣賞豐富且特殊的岩石海蝕地形與壯麗海景。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">12:00</span><span class="spot-time food-tag">午餐推薦</span>
+                    <a href="https://maps.google.com/?q=都蘭海角咖啡" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🍽️ 都蘭海角咖啡</div>
+                <img src="images/day/day1-food.jpg" class="spot-img" alt="都蘭海角咖啡">
+                <div class="spot-desc">
+                    <b>特色：</b><br>
+                    • 海景第一排無敵視野<br>
+                    • 招牌義大利麵、燉飯<br>
+                    • 拍照超漂亮，非常適合情侶與姐妹聚餐
+                </div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">13:30</span><span class="spot-time spot-tag">停留約40分鐘</span>
+                    <a href="https://maps.google.com/?q=加路蘭海岸" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🎨 加路蘭海岸</div>
+                <img src="images/day/day1-4.jpg" class="spot-img" alt="加路蘭海岸">
+                <div class="spot-desc">蔚藍海景加上豐富的大型漂流木裝置藝術。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">14:30</span><span class="spot-time spot-tag">停留約20分鐘</span>
+                    <a href="https://maps.google.com/?q=都蘭觀海平台" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🌊 都蘭觀海平台</div>
+                <img src="images/day/day1-5.jpg" class="spot-img" alt="都蘭觀海平台">
+                <div class="spot-desc">高處俯瞰一整片廣闊無邊的太平洋。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">15:00</span><span class="spot-time spot-tag">停留約1小時</span>
+                    <a href="https://maps.google.com/?q=新東糖廠文化園區" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🏭 新東糖廠文化園區</div>
+                <img src="images/day/day1-6.jpg" class="spot-img" alt="新東糖廠文化園區">
+                <div class="spot-desc">充滿懷旧氛圍的都蘭文創藝術聚落，適合慢慢逛。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">16:30</span><span class="spot-time spot-tag">停留約1小時</span>
+                    <a href="https://maps.google.com/?q=都歷沙灘" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🌅 都歷沙灘</div>
+                <img src="images/day/day1-7.jpg" class="spot-img" alt="都歷沙灘">
+                <div class="spot-desc">這個時間點光線最美！退潮時呈現天空之鏡倒影，超適合拍夕陽感絕美照片。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header"><span class="spot-time">18:30</span></div>
+                <div class="spot-title">🚗 返回台東市區</div>
+                <div class="spot-desc">返回市區飯店 Check-in 稍作休息。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">晚上</span><span class="spot-time spot-tag">夜間散步</span>
+                    <a href="https://maps.google.com/?q=鐵花村音樂聚落" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🎶 鐵花村音樂聚落</div>
+                <img src="images/day/day1-8.jpg" class="spot-img" alt="鐵花村音樂聚落">
+                <div class="spot-desc">悠閒散步、欣賞熱氣球燈燈海，逛文創手作市集。</div>
             </div>
 			
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">15:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">✈️ 17END (下地島絕景)</div>
-                <img src="images/day/day1-6.jpg" class="spot-img" alt="17END">
-                <div class="spot-desc">位於跑道盡頭的神秘絕景，退潮時呈現夢幻Tiffany藍淺灘，也是近距離看飛機起降的秘境。</div>
-            </div>
-									
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Irabu+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌉 伊良部大橋</div>
-                <img src="images/day/day1-3.jpg" class="spot-img" alt="伊良部大橋">
-                <div class="spot-desc">全長3,540公尺，跨越極致夢幻的漸層「宮古藍」海洋，體驗如飛馳於海面上的快感。</div>
-            </div>
-			
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">16:30</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Makiyama+Observatory" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🦅 牧山展望台</div>
-                <img src="images/day/day1-4.jpg" class="spot-img" alt="牧山展望台">
-                <div class="spot-desc">位於伊良部島最高點，外型為灰面鷲造型，可全景俯瞰伊良部大橋與宮古本島。</div>
-            </div>
-			
-            <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Painagama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🌅 Painagama Beach 海邊散步</div>
-                <img src="images/day/day1-5.jpg" class="spot-img" alt="Painagama Beach">
-                <div class="spot-desc">靠近市區的浪漫沙灘，是欣賞夕陽餘暉與感受在地島嶼慢活步調的首選。</div>
-            </div>
-			
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
-                    <a href="https://maps.app.goo.gl/mv5Pw5CyhFZufJ3A8" target="_blank" class="map-link">📍 地圖導航</a>
-				</div>
-                <div class="spot-title">🍽️ 宮古牛焼肉 玉城</div>
-                <img src="images/day/day1-dinner.jpg" class="spot-img" alt="宮古牛焼肉 玉城">
-                <div class="spot-desc">該店以一頭買（整頭牛購入）的方式提供極其稀有、被譽為「幻之和牛」的頂級宮古牛，讓饕客可以品嚐到各種珍貴的稀有部位。</div>
-            </div>
             <div class="hotel-badge">🏨 住宿：娜路彎大酒店</div>
         </div>
 
         <!-- ===== Day 2 ===== -->
         <div id="day2" class="tab-content">
             <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">上午 (約3小時)</span><span class="spot-time spot-tag">活動</span>
-                    <a href="https://maps.google.com/?q=Yabiji" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">🤿 八重干瀨 / 藍洞浮潛</div>
-                <img src="images/day/day2-1.jpg" class="spot-img" alt="浮潛">
-                <div class="spot-desc">搭船前往日本最大規模的珊瑚礁群八重干瀨，深入透亮海底與熱帶魚及海龜共遊。</div>
+                <div class="spot-header"><span class="spot-time">10:00</span></div>
+                <div class="spot-title">🚗 從飯店出發</div>
+                <div class="spot-desc">今天採<b>「縱谷北上 → 東海岸南下」</b>環狀路線，不走回頭路！</div>
             </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-time spot-tag">活動</span></div>
-                <div class="spot-title">🏄‍♂️ SUP 或 獨木舟水上體驗</div>
-                <img src="images/day/day2-2.jpg" class="spot-img" alt="SUP體驗">
-                <div class="spot-desc">站在立槳上滑行於清澈見底的海面上，捕捉令人屏息的海島寫真。</div>
-            </div>
-            <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">下午</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">☕ 下午海景咖啡廳</div>
-                <img src="images/day/day2-cafe.jpg" class="spot-img" alt="海景咖啡">
-                <div class="spot-desc">水上活動後找間臨海咖啡館，享受特調芒果飲品與悠揚樂聲。</div>
-            </div>
+
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Higashi+Hennazaki" target="_blank" class="map-link">📍 地圖導航</a>
+                    <span class="spot-time">11:00</span><span class="spot-time spot-tag">停留約2小時</span>
+                    <a href="https://maps.google.com/?q=伯朗大道" target="_blank" class="map-link">📍 地圖</a>
                 </div>
-                <div class="spot-title">🌇 東平安名崎 觀夕</div>
-                <img src="images/day/day2-3.jpg" class="spot-img" alt="東平安名崎">
-                <div class="spot-desc">長達2公里的海蝕岬角，壯麗陡峭的崖壁與浪漫落日餘暉相映成趣。</div>
+                <div class="spot-title">🌾 伯朗大道</div>
+                <img src="images/day/day2-1.jpg" class="spot-img" alt="伯朗大道">
+                <div class="spot-desc">廣闊無際的稻田景致，建議現場租腳踏車或電動車漫遊綠色天堂路。</div>
             </div>
+
             <div class="spot-card">
-                <div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🍻 島居酒屋晚餐</div>
-                <img src="images/day/day2-dinner.jpg" class="spot-img" alt="居酒屋">
-                <div class="spot-desc">沉浸在三線琴演奏與沖繩民謠氛圍中，搭配新鮮海鮮與冰涼啤酒。</div>
+                <div class="spot-header"><span class="spot-time">13:00</span><span class="spot-time food-tag">午餐推薦</span></div>
+                <div class="spot-title">🍱 池上便當 / 池上特色餐廳</div>
+                <img src="images/day/day2-food.jpg" class="spot-img" alt="池上餐廳">
+                <div class="spot-desc">品嚐正宗池上米便當或在地文青小餐館。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">14:30</span><span class="spot-time spot-tag">停留約40分鐘</span>
+                    <a href="https://maps.google.com/?q=長濱金剛大道" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🛣️ 長濱金剛大道</div>
+                <img src="images/day/day2-2.jpg" class="spot-img" alt="長濱金剛大道">
+                <div class="spot-desc">筆直延伸至太平洋的夢幻道路，遠眺背後的金剛山山景。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">15:30</span><span class="spot-time spot-tag">停留約20分鐘</span>
+                    <a href="https://maps.google.com/?q=宜灣卡片教堂" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">⛪ 宜灣卡片教堂</div>
+                <img src="images/day/day2-3.jpg" class="spot-img" alt="宜灣卡片教堂">
+                <div class="spot-desc">外觀如同聖誕卡片般的可愛哥德式建築風格教堂。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">停留約40分鐘</span>
+                    <a href="https://maps.google.com/?q=比西里岸" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🐑 比西里岸部落</div>
+                <img src="images/day/day2-4.jpg" class="spot-img" alt="比西里岸部落">
+                <div class="spot-desc">走訪阿美族部落，尋找隱藏在角落的幾米主題裝置藝術與木雕羊。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">停留約1小時</span>
+                    <a href="https://maps.google.com/?q=三仙台" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🌉 三仙台</div>
+                <img src="images/day/day2-5.jpg" class="spot-img" alt="三仙台">
+                <div class="spot-desc">經典地標跨海拱橋，傍晚時分可拍到迷人的黃昏晚霞景色。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header">
+                    <span class="spot-time">18:30</span><span class="spot-time food-tag">晚餐推薦</span>
+                    <a href="https://maps.google.com/?q=成功海銀行" target="_blank" class="map-link">📍 地圖</a>
+                </div>
+                <div class="spot-title">🍷 成功海銀行（觀景餐廳）</div>
+                <img src="images/day/day2-dinner.jpg" class="spot-img" alt="成功海銀行">
+                <div class="spot-desc">
+                    <b>特色：</b><br>
+                    • 東海岸知名海景餐廳<br>
+                    • 可邊用餐邊欣賞夜色與海景<br>
+                    • 在地鮮採海鮮料理非常優秀<br><br>
+                    <i>* 用餐後直接返回台東市區（約50分鐘車程）</i>
+                </div>
             </div>
             <div class="hotel-badge">🏨 住宿：日暉國際度假村</div>
         </div>
@@ -871,70 +948,79 @@
         <!-- ===== Day 3 ===== -->
         <div id="day3" class="tab-content">
 			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">10:00</span><span class="spot-time food-tag">美食</span></div>
-                <div class="spot-title">🥩 早餐</div>
-                <div class="spot-desc">在飯店附近享用早餐。</div>
-			</div>
+                <div class="spot-header"><span class="spot-time">10:00</span></div>
+                <div class="spot-title">🏨 飯店退房出發</div>
+                <div class="spot-desc">辦理退房，行李直接上車，開啟最後一天的南迴海景行程。</div>
+            </div>
+
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">11:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Yonaha+Maehama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
+                    <span class="spot-time">10:40</span><span class="spot-time spot-tag">停留約40分鐘</span>
+                    <a href="https://maps.google.com/?q=太麻里櫻木平交道" target="_blank" class="map-link">📍 地圖</a>
                 </div>
-                <div class="spot-title">🏖️ 與那霸前濱海灘</div>
-                <img src="images/day/day3-1.jpg" class="spot-img" alt="與那霸前濱">
-                <div class="spot-desc">獲譽為「東洋第一美海灘」，綿延7公里的純白細沙與漸層湛藍海景。</div>
+                <div class="spot-title">🚃 太麻里櫻木平交道</div>
+                <img src="images/day/day3-1.jpg" class="spot-img" alt="太麻里櫻木平交道">
+                <div class="spot-desc">熱門打卡景點！宛如灌籃高手經典場景的海天一色平交道。</div>
             </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">12:00</span><span class="spot-time food-tag">美食</span>
-                    <a href="https://maps.app.goo.gl/q8dNLYSGVyd7xg8N6" target="_blank" class="map-link">📍 地圖導航</a>
-				</div>
-                <div class="spot-title">🥩 HARRY’S Shrimp Truck</div>
-                <img src="images/day/day3-lunch.jpg" class="spot-img" alt="HARRY'S">
-                <div class="spot-desc">享用宮古島蝦蝦飯，邊看海景。</div>
-			</div>
+
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">14:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Kurima+Bridge" target="_blank" class="map-link">📍 地圖導航</a>
+                    <span class="spot-time">11:30</span><span class="spot-time spot-tag">停留約20分鐘</span>
+                    <a href="https://maps.google.com/?q=華源觀景台" target="_blank" class="map-link">📍 地圖</a>
                 </div>
-                <div class="spot-title">🌉 來間大橋 & 來間島小鎮</div>
-                <img src="images/day/day3-2.jpg" class="spot-img" alt="來間大橋">
-                <div class="spot-desc">穿過1,690公尺長的跨海大橋，前往質感文青雜貨小店與小島咖啡館。</div>
+                <div class="spot-title">🏞️ 華源觀景台</div>
+                <img src="images/day/day3-2.jpg" class="spot-img" alt="華源觀景台">
+                <div class="spot-desc">俯瞰南迴公路與弧形海灣的經典太平洋絕景。</div>
             </div>
+
+            <div class="spot-card">
+                <div class="spot-header"><span class="spot-time">12:00</span><span class="spot-time food-tag">午餐</span></div>
+                <div class="spot-title">🍲 太麻里特色餐廳</div>
+                <img src="images/day/day3-lunch.jpg" class="spot-img" alt="太麻里特色餐廳">
+                <div class="spot-desc">享用當地風味料理或原住民風味午餐。</div>
+            </div>
+
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">15:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Ryugujo+Observatory" target="_blank" class="map-link">📍 地圖導航</a>
+                    <span class="spot-time">13:30</span><span class="spot-time spot-tag">約2小時</span>
+                    <a href="https://maps.google.com/?q=知本溫泉" target="_blank" class="map-link">📍 地圖</a>
                 </div>
-                <div class="spot-title">🏯 龍宮城展望台</div>
-                <img src="images/day/day3-3.jpg" class="spot-img" alt="龍宮城展望台">
-                <div class="spot-desc">仿造龍宮風格建造的三層樓展望台，此處是俯瞰與那霸前濱海灘的絕佳視角。</div>
+                <div class="spot-title">♨️ 知本溫泉</div>
+                <img src="images/day/day3-3.jpg" class="spot-img" alt="知本溫泉">
+                <div class="spot-desc">體驗優質溫泉泡湯，好好放鬆肌肉與身心靈。</div>
             </div>
+
             <div class="spot-card">
                 <div class="spot-header">
-                    <span class="spot-time">16:00</span><span class="spot-time spot-tag">參觀</span>
-                    <a href="https://maps.google.com/?q=Yukisio+Museum" target="_blank" class="map-link">📍 地圖導航</a>
+                    <span class="spot-time">16:00</span><span class="spot-time food-tag">下午茶推薦</span>
                 </div>
-                <div class="spot-title">🧂 雪鹽博物館</div>
-                <img src="images/day/day3-4.jpg" class="spot-img" alt="雪鹽博物館">
-                <div class="spot-desc">深入認識宮古島金氏世界紀錄的雪鹽製程，別忘了現場品嚐著名的雪鹽霜淇淋！</div>
+                <div class="spot-title">☕ 逐浪海景咖啡 或 天空之鏡咖啡</div>
+                <img src="images/day/day3-cafe.jpg" class="spot-img" alt="逐浪海景咖啡">
+                <div class="spot-desc">
+                    <b>特色：</b><br>
+                    • 海景第一排視野<br>
+                    • 旅程最後悠閒放空<br>
+                    • 設有夢幻打卡造景，非常適合拍團體合照
+                </div>
             </div>
+
             <div class="spot-card">
-                <div class="spot-header">
-                    <span class="spot-time">17:00</span><span class="spot-time spot-tag">景點</span>
-                    <a href="https://maps.google.com/?q=Sunayama+Beach" target="_blank" class="map-link">📍 地圖導航</a>
-                </div>
-                <div class="spot-title">⛰️ 砂山海灘</div>
-                <img src="images/day/day3-5.jpg" class="spot-img" alt="砂山海灘">
-                <div class="spot-desc">穿越細微沙丘後即可看見由天然海蝕作用形成的經典拱形珊瑚岩海蝕洞。</div>
+                <div class="spot-header"><span class="spot-time">17:15</span></div>
+                <div class="spot-title">🚗 前往市區</div>
+                <div class="spot-desc">準備返程前往市區準備還車。</div>
             </div>
-			<div class="spot-card">
-				<div class="spot-header"><span class="spot-time">18:00</span><span class="spot-time food-tag">美食</span>
-				</div>
-                <div class="spot-title">🥩 焼肉なかお</div>
-                <img src="images/day/day3-dinner.jpg" class="spot-img" alt="焼肉">
-                <div class="spot-desc">在飯店附近享用晚餐。</div>
-			</div>
+
+            <div class="spot-card">
+                <div class="spot-header"><span class="spot-time">18:00</span></div>
+                <div class="spot-title">🚙 還車 ＆ 抵達台東機場</div>
+                <div class="spot-desc">順利還車並前往櫃檯辦理登機與行李托運手續。</div>
+            </div>
+
+            <div class="spot-card">
+                <div class="spot-header"><span class="spot-time">19:00</span></div>
+                <div class="spot-title">✈️ 起飛返回台北</div>
+                <div class="spot-desc">滿載台東藍的美好回憶，搭乘班機返回台北！</div>
+            </div>
         </div>
 
         <!-- ===== Map (地圖導覽與景點清單) ===== -->
@@ -950,42 +1036,53 @@
 
             <div class="calc-card">
                 <div class="check-group">
-                    <h4>1. 山線</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_1" onchange="syncMapState('map_1_1')"><label for="map_1_1">1.1. 大坡池(伯朗大道)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_2" onchange="syncMapState('map_1_2')"><label for="map_1_2">1.2. 鹿野半日遊</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_3" onchange="syncMapState('map_1_3')"><label for="map_1_3">1.3. 紅葉谷綠能溫泉</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_4" onchange="syncMapState('map_1_4')"><label for="map_1_4">1.4. 花藞藞玫瑰岩休閒農場(景觀咖啡廳)</label></div>
+                    <h4>1. 秘境打卡路線</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_1" onchange="syncMapState('map_1_1')"><label for="map_1_1">1.1. 長濱金剛大道</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_2" onchange="syncMapState('map_1_2')"><label for="map_1_2">1.2. 伯朗大道</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_3" onchange="syncMapState('map_1_3')"><label for="map_1_3">1.3. 宜灣卡片教堂</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_4" onchange="syncMapState('map_1_4')"><label for="map_1_4">1.4. 台東大學圖書館</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_5" onchange="syncMapState('map_1_5')"><label for="map_1_5">1.5. 太麻里櫻木平交道</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_6" onchange="syncMapState('map_1_6')"><label for="map_1_6">1.6. 多良車站</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_7" onchange="syncMapState('map_1_7')"><label for="map_1_7">1.7. 都蘭觀海平台</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_1_8" onchange="syncMapState('map_1_8')"><label for="map_1_8">1.8. 台東森林公園</label></div>
                 </div>
 
                 <div class="check-group">
-                    <h4>2. 海線</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_1" onchange="syncMapState('map_2_1')"><label for="map_2_1">2.1. 金剛大道</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_2" onchange="syncMapState('map_2_2')"><label for="map_2_2">2.2. 卡片教堂</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_3" onchange="syncMapState('map_2_3')"><label for="map_2_3">2.3. 成功漁港魚市場</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_4" onchange="syncMapState('map_2_4')"><label for="map_2_4">2.4. 都歷遊客中心</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_5" onchange="syncMapState('map_2_5')"><label for="map_2_5">2.5. 都歷沙灘</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_6" onchange="syncMapState('map_2_6')"><label for="map_2_6">2.6. 金樽遊憩區</label></div>
+                    <h4>2. 藝文休閒路線</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_1" onchange="syncMapState('map_2_1')"><label for="map_2_1">2.1. 鐵花村音樂聚落</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_2" onchange="syncMapState('map_2_2')"><label for="map_2_2">2.2. 比西里岸部落</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_3" onchange="syncMapState('map_2_3')"><label for="map_2_3">2.3. 都蘭新東糖廠文化園區</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_4" onchange="syncMapState('map_2_4')"><label for="map_2_4">2.4. 布農部落休閒農場</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_5" onchange="syncMapState('map_2_5')"><label for="map_2_5">2.5. 星星部落景觀咖啡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_6" onchange="syncMapState('map_2_6')"><label for="map_2_6">2.6. 台東美術館</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_2_7" onchange="syncMapState('map_2_7')"><label for="map_2_7">2.7. 海角咖啡</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_2_8" onchange="syncMapState('map_2_8')"><label for="map_2_8">2.8. 富山護魚區</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="map_2_9" onchange="syncMapState('map_2_9')"><label for="map_2_9">2.9. 加路蘭海岸</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_2_10" onchange="syncMapState('map_2_10')"><label for="map_2_10">2.10. 江賢二藝術園區</label></div>
                 </div>
 
                 <div class="check-group">
-                    <h4>3. 市區</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_1" onchange="syncMapState('map_3_1')"><label for="map_3_1">3.1. 台東森林公園</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_2" onchange="syncMapState('map_3_2')"><label for="map_3_2">3.2. 庫空間舊鐵道之旅</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_3" onchange="syncMapState('map_3_3')"><label for="map_3_3">3.3. 台東大學圖書館</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_4" onchange="syncMapState('map_3_4')"><label for="map_3_4">3.4. 俩吆久景觀貨櫃</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_5" onchange="syncMapState('map_3_5')"><label for="map_3_5">3.5. 鐵花村音樂聚落</label></div>
+                    <h4>3. 東海岸巡禮</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_1" onchange="syncMapState('map_3_1')"><label for="map_3_1">3.1. 三仙台</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_2" onchange="syncMapState('map_3_2')"><label for="map_3_2">3.2. 加路蘭海岸</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_3" onchange="syncMapState('map_3_3')"><label for="map_3_3">3.3. 台東小野柳（富岡地質公園）</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_3_4" onchange="syncMapState('map_3_4')"><label for="map_3_4">3.4. 都歷沙灘</label></div>
                 </div>
 
                 <div class="check-group">
-                    <h4>4. 自然與冒險的最佳境界！五個互動景點</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_1" onchange="syncMapState('map_4_1')"><label for="map_4_1">4.1. </label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_2" onchange="syncMapState('map_4_2')"><label for="map_4_2">4.2. </label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_3" onchange="syncMapState('map_4_3')"><label for="map_4_3">4.3. </label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_4" onchange="syncMapState('map_4_4')"><label for="map_4_4">4.4. </label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_5" onchange="syncMapState('map_4_5')"><label for="map_4_5">4.5. </label></div>
+                    <h4>4. 親子休閒路線</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_1" onchange="syncMapState('map_4_1')"><label for="map_4_1">4.1. 初鹿牧場</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_2" onchange="syncMapState('map_4_2')"><label for="map_4_2">4.2. 知本溫泉</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_3" onchange="syncMapState('map_4_3')"><label for="map_4_3">4.3. 台東海濱公園</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_4" onchange="syncMapState('map_4_4')"><label for="map_4_4">4.4. 原生應用植物園</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_5" onchange="syncMapState('map_4_5')"><label for="map_4_5">4.5. 知本國家森林遊樂區</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_4_6" onchange="syncMapState('map_4_6')"><label for="map_4_6">4.6. 鹿野高台</label></div>
+                </div>
+				
+                <div class="check-group">
+                    <h4>5. 自然生態行程</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_1" onchange="syncMapState('map_5_1')"><label for="map_5_1">5.1. 桑樹溪朔溪</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="map_5_2" onchange="syncMapState('map_5_2')"><label for="map_5_2">5.2. 嘉明湖</label></div>
                 </div>
             </div>
         </div>
@@ -994,87 +1091,86 @@
         <div id="food-shopping" class="tab-content">
             <!-- 子區塊 1: 美食 -->
             <div id="food-sub" class="sub-tab-content active">
-                <div class="section-header-title">🍜 餐廳推薦 <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-bottom: -6px;">(點擊圖片標記已完成)</p></div>
+                <div class="section-header-title">🍜 小吃.餐廳推薦 <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-bottom: -6px;">(點擊圖片標記已完成)</p></div>
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🥩 宮古牛頂級燒肉</span>
-                        <a href="https://maps.google.com/?q=焼肉なかお" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【焼肉なかお】Nakao 宮古牛</div>
-                    <img src="images/food_01.jpg" id="food_01" class="spot-img" alt="宮古牛Nakao" onclick="toggleGiftState('food_01')">
-                    <div class="spot-desc">專賣極品宮古牛燒肉，肉質油花分佈勻稱，燒烤後入口即化。</div>
+                        <span class="spot-time food-tag">🍔 本土特色漢堡</span>
+                        <a href="https://maps.app.goo.gl/BnzotME38eoVRU2n7" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【藍蜻蜓速食專賣店】</div>
+                    <img src="images/food_01.jpg" id="food_01" class="spot-img" alt="藍蜻蜓速食專賣店" onclick="toggleGiftState('food_01')">
+                    <div class="spot-desc">老字號的在地炸雞店，藍蜻蜓在台東可說是許多人從小吃到大的好味道，炸雞皮薄卻酥脆。</div>
                 </div>
 
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🍜 老字號宮古麵</span>
-                        <a href="https://maps.google.com/?q=古謝そば屋" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【古謝そば屋】蕎麥麵</div>
-                    <img src="images/food_02.jpg" id="food_02" class="spot-img" alt="古謝蕎麥麵屋" onclick="toggleGiftState('food_02')">
-                    <div class="spot-desc">創立數十年的老字號名店，清甜濃郁的柴魚湯頭配上軟嫩三層肉與燉軟骨。</div>
+                        <span class="spot-time food-tag">🍽️ 酥脆臭豆腐</span>
+                        <a href="https://maps.app.goo.gl/LpVPdc7mtqDJbPzS6" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【阿山哥臭豆腐】</div>
+                    <img src="images/food_02.jpg" id="food_02" class="spot-img" alt="阿山哥臭豆腐" onclick="toggleGiftState('food_02')">
+                    <div class="spot-desc">阿山哥臭豆腐南王店是台東小有名氣、在地人推薦的台東小吃！</div>
                 </div>
 
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🦀 秘境海鮮</span>					
-                        <a href="https://maps.google.com/?q=海鮮悟空" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【海鮮悟空】椰子蟹</div>
-                    <img src="images/food_03.jpg" id="food_03" class="spot-img" alt="海鮮悟空" onclick="toggleGiftState('food_03')">
-                    <div class="spot-desc">平良市區熱門名店，可品嚐宮古島特色野生椰子蟹料理與極鮮海鮮丼。</div>
+                        <span class="spot-time food-tag">🍽️ 泰式手作定食</span>					
+                        <a href="https://maps.app.goo.gl/GzrTMxsS6CbLgAhQ8" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【Tanya’s 泰食餐桌】</div>
+                    <img src="images/food_03.jpg" id="food_03" class="spot-img" alt="泰食餐桌" onclick="toggleGiftState('food_03')">
+                    <div class="spot-desc">主廚畢業於曼谷藍帶廚藝學院，堅持不使用味精與速成醬包，其咖哩醬皆由新鮮香草與香料手工研磨調製而成。</div>
                 </div>
 
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🍢 當地風味居酒屋</span>
-                        <a href="https://maps.google.com/?q=島おでんたから" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【島おでんたから】居酒屋</div>
-                    <img src="images/food_04.jpg" id="food_04" class="spot-img" alt="島おでんたから" onclick="toggleGiftState('food_04')">
-                    <div class="spot-desc">以燉煮極致入味的島關東煮與香酥豬腳聞名的超高人氣排隊名店。</div>
+                        <span class="spot-time food-tag">🍽️ 港式茶餐廳</span>
+                        <a href="https://maps.app.goo.gl/dGDSJQ2AqJoKRmcp9" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【機關車庫 Tea House 1917】</div>
+                    <img src="images/food_04.jpg" id="food_04" class="spot-img" alt="機關車庫 Tea House 1917" onclick="toggleGiftState('food_04')">
+                    <div class="spot-desc">目前該文化資產空間由雲品國際活化經營，轉型為文創餐廳，引進君品酒店頤宮中餐廳的星級港點與招牌甜品，並首創千元以下的櫻桃烤鴨三吃。</div>
                 </div>
 
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🦀 蟹肉體驗</span>
-                        <a href="https://maps.google.com/?q=蟹蔵+Miyako" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【蟹蔵】</div>
-                    <img src="images/food_05.jpg" id="food_05" class="spot-img" alt="蟹蔵" onclick="toggleGiftState('food_05')">
-                    <div class="spot-desc">位於伊良部島，提供青蟹紅樹林導覽體驗與新鮮現蒸紅樹林蟹珍饈。</div>
+                        <span class="spot-time food-tag">🍽️ 中式簡餐店</span>
+                        <a href="https://maps.app.goo.gl/k3CfpmVP8ZYZnkiF9" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【蔥薑蒜料理小廚】</div>
+                    <img src="images/food_05.jpg" id="food_05" class="spot-img" alt="蔥薑蒜料理小廚" onclick="toggleGiftState('food_05')">
+                    <div class="spot-desc">餐廳提供的家常菜雖然常見，但口味非常到位，且使用的新鮮天然食材讓菜餚健康可口，令人感到滿足。。</div>
                 </div>
                 
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🚌 美式校車餐車</span>
-                        <a href="https://maps.google.com/?q=HARRY’S+Shrimp+Truck" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【HARRY’S Shrimp Truck】奶油蒜蝦飯</div>
-                    <img src="images/food_06.jpg" id="food_06" class="spot-img" alt="Blue Turtle Farm Mango Cafe" onclick="toggleGiftState('food_06')">
-                    <div class="spot-desc">主打各式蝦蝦飯，美式校車、藍綠色半露天座位，再加上海岸景色，很有宮古島獨有的悠閒感。</div>
+                        <span class="spot-time food-tag">🍽️ 原住民風味</span>
+                        <a href="https://maps.app.goo.gl/fUUeDcosUQ5J89Tr6" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【原始部落山地美食】</div>
+                    <img src="images/food_06.jpg" id="food_06" class="spot-img" alt="原始部落山地美食" onclick="toggleGiftState('food_06')">
+                    <div class="spot-desc">位於山邊的露天咖啡廳，供應台東原住民傳統料理，並提供現場表演。推薦美食：火烤放山雞、原味烤魚、經典原民風味</div>
                 </div>
 				
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🍜 宮古麵</span>
-                        <a href="https://maps.app.goo.gl/uRfEmToixCsJzgbH9" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【港食堂ニュー浜や】New Hamaya 宮古麵</div>
-                    <img src="images/food_07.jpg" id="food_07" class="spot-img" alt="港食堂ニュー浜や" onclick="toggleGiftState('food_07')">
-                    <div class="spot-desc">打破傳統宮古麵僅用豬骨和柴魚熬湯的印象，這裡加入了蜆（文蛤）、鯖魚、昆布、香菇等熬製出層次豐富的「黃金湯頭」。</div>
+                        <span class="spot-time food-tag">🍽️ 武陵咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/uRfEmToixCsJzgbH9" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【武陵監獄咖啡廳】</div>
+                    <img src="images/food_07.jpg" id="food_07" class="spot-img" alt="武陵監獄咖啡廳" onclick="toggleGiftState('food_07')">
+                    <div class="spot-desc">位於台東鹿野、被譽為「全台最美監獄咖啡廳」的武陵咖啡廳，武陵烤雞嚴選自所內自行放養的黑羽土雞，外皮金黃酥脆、雞肉軟嫩多汁，需提早70分鐘預約。</div>
                 </div>
 				
                 <div class="spot-card food">
                     <div class="spot-header">
                         <span class="spot-time food-tag">🍜 在地小店</span>
-                        <a href="https://maps.app.goo.gl/rWELmknJVFQtJBiz7" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【炭火麺屋 市】宮古蕎麥麵</div>
-                    <img src="images/food_08.jpg" id="food_08" class="spot-img" alt="炭火麺屋 市" onclick="toggleGiftState('food_08')">
-                    <div class="spot-desc">主打兼具在地風味與百元等級高性價比的宮古島蕎麥麵（宮古そば）與自慢炭火燒鳥（烤雞串）。</div>
+                        <a href="https://maps.app.goo.gl/Lrrhr3hRwbZrT88t7" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【榕樹下米苔目*小滿雨生】</div>
+                    <img src="images/food_08.jpg" id="food_08" class="spot-img" alt="榕樹下米苔目*小滿雨生" onclick="toggleGiftState('food_08')">
+                    <div class="spot-desc">從大同路榕樹下路邊攤到人氣名店，一碗米苔目見證台東半世紀的好味道。</div>
                 </div>
 				
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🍜 頂級涮涮鍋</span>
-                        <a href="https://maps.app.goo.gl/eMiwSV1x4Nu75eyG6" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【燦伊良部島店】豬肉涮涮鍋</div>
-                    <img src="images/food_09.jpg" id="food_09" class="spot-img" alt="燦伊良部島店" onclick="toggleGiftState('food_09')">
-                    <div class="spot-desc">午餐：以宮古蕎麥麵（宮古そば）為核心。
-                <br>晚餐：主打使用宮古鄉里牛與阿古豬、鳳梨豬等三種沖繩在地產名豬的頂級涮涮鍋與壽喜燒。(晚餐要提早一天訂位)</div>
+                        <span class="spot-time food-tag">🍜 號稱全台最美路邊攤</span>
+                        <a href="https://maps.app.goo.gl/gsgg4DdRhZEHUAPp7" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【我在玩-玩冰箱】</div>
+                    <img src="images/food_09.jpg" id="food_09" class="spot-img" alt="我在玩-玩冰箱" onclick="toggleGiftState('food_09')">
+                    <div class="spot-desc">台東海線最美早午餐，漂流木屋裡的在地風味。</div>
                 </div>
             </div>
 
@@ -1083,149 +1179,134 @@
                 <div class="section-header-title">☕︎ 咖啡廳.甜點店 <p style="font-size: 12px; color: var(--text-secondary); text-align: center; margin-bottom: -6px;">(點擊圖片標記已完成)</p></div>
                 <div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🥭 芒果海景咖啡</span>
-                        <a href="https://maps.app.goo.gl/iZpQqZcSEtgffSag6" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【Blue Turtle】芒果冰沙</div>
-                    <img src="images/cafe_01.jpg" id="cafe_01" class="spot-img" alt="Blue Turtle" onclick="toggleGiftState('cafe_01')">
-                    <div class="spot-desc">自設農場直送新鮮芒果，搭配無敵海景享受濃郁芒果冰沙與精緻甜點。</div>
+                        <span class="spot-time food-tag">🍨 冰淇淋專賣</span>
+                        <a href="https://maps.app.goo.gl/Tq7WVdqX8Sr4m7yF7" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【美濃冰品】</div>
+                    <img src="images/cafe_01.jpg" id="cafe_01" class="spot-img" alt="美濃冰品" onclick="toggleGiftState('cafe_01')">
+                    <div class="spot-desc">來自台東卑南，堅持使用在地小農契作新鮮水果與優質乳源，打造純粹、無添加的手作冰淇淋。</div>
                 </div>
 				<div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">🍕 海景義式餐廳</span>
-                        <a href="https://maps.app.goo.gl/1vZ9SrM3AqkgMzcG7" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【Gelato Cafe Ninufa】</div>
-                    <img src="images/cafe_02.jpg" id="cafe_02" class="spot-img" alt="Gelato Cafe Ninufa" onclick="toggleGiftState('cafe_02')">
-                    <div class="spot-desc">在池間島的絕景中享用正統義式冰淇淋與義式披薩。</div>
+                        <span class="spot-time food-tag">☕️ 海景咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/QByyB3oXK44P21Sk7" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【鳳凰民宿 咖啡】</div>
+                    <img src="images/cafe_02.jpg" id="cafe_02" class="spot-img" alt="鳳凰民宿 咖啡" onclick="toggleGiftState('cafe_02')">
+                    <div class="spot-desc">獨特的造型像是展翅停留在東海岸邊，帶著一種神秘又壯闊的氣息，讓人彷彿走進一座可以喝咖啡、看海，也能慢慢欣賞藝術的空間。</div>
                 </div>
 				<div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">☕️ 海景隱密風咖啡廳</span>
-                        <a href="https://maps.app.goo.gl/QdBLkSHGkeyTHqoP6" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【LOCO MANGER】宮古牛漢堡排</div>
-                    <img src="images/cafe_03.jpg" id="cafe_03" class="spot-img" alt="LOCO MANGER" onclick="toggleGiftState('cafe_03')">
-                    <div class="spot-desc">可眺望宮古島藍色海洋與伊良部島的絕美咖啡館，由出身法式料理的資深主廚主理，使用宮古島與沖繩當地食材。</div>
+                        <span class="spot-time food-tag">☕️ 海景餐廳</span>
+                        <a href="https://maps.app.goo.gl/SYr26FGQGYPP8V517" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【都蘭海角咖啡】</div>
+                    <img src="images/cafe_03.jpg" id="cafe_03" class="spot-img" alt="都蘭海角咖啡" onclick="toggleGiftState('cafe_03')">
+                    <div class="spot-desc">愜意的餐廳，供應西班牙料理、咖啡和酒精飲料，並有可俯瞰大海的寬闊草坪。</div>
                 </div>
 				<div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">☕️ 手沖咖啡廳</span>
-                        <a href="https://maps.app.goo.gl/nppZWTLdTFGKCqg36" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【Ningin Coffee】黑糖拿鐵</div>
-                    <img src="images/cafe_04.jpg" id="cafe_04" class="spot-img" alt="Ningin Coffee" onclick="toggleGiftState('cafe_04')">
-                    <div class="spot-desc">店主為每位客人親手手沖咖啡，從磨豆、悶蒸到注水的每一個節奏都恰到好處，主推巴斯克和紅豆奶油吐司，紅豆不會過於甜膩，搭配鹹奶油，好日式的下午茶。</div>
+                        <span class="spot-time food-tag">☕️ 南洋風</span>
+                        <a href="https://maps.app.goo.gl/hi6cRJmi3pkD4AbE7" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【可可娜咖啡】</div>
+                    <img src="images/cafe_04.jpg" id="cafe_04" class="spot-img" alt="可可娜咖啡" onclick="toggleGiftState('cafe_04')">
+                    <div class="spot-desc">可可娜咖啡有茅草、椰子樹，整個南洋風好悠閒，很有渡假的氛圍。</div>
                 </div>
 				<div class="spot-card food">
                     <div class="spot-header">
-                        <span class="spot-time food-tag">☕️ 早午餐咖啡廳</span>
-                        <a href="https://maps.app.goo.gl/w4M8MGUcvANj9CVT8" target="_blank" class="map-link">📍 地圖導航</a></div>
-                    <div class="spot-title">【LB CAFE】法式吐司套餐</div>
-                    <img src="images/cafe_05.jpg" id="cafe_05" class="spot-img" alt="LB CAFE" onclick="toggleGiftState('cafe_05')">
-                    <div class="spot-desc">這裡以充滿海島度假風的舒適木質裝潢、美味的早午餐點，以及店外經典的天使翅膀打卡牆而聞名。</div>
+                        <span class="spot-time food-tag">☕️ 海景咖啡廳</span>
+                        <a href="https://maps.app.goo.gl/uMorJRvxcesD7RwdA" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【涯口海景咖啡】</div>
+                    <img src="images/cafe_05.jpg" id="cafe_05" class="spot-img" alt="涯口海景咖啡" onclick="toggleGiftState('cafe_05')">
+                    <div class="spot-desc">這涯口海景咖啡緊鄰海岸線第一排，坐擁無邊際的湛藍太平洋與天空美景，園區設有特色茅草屋、小涼亭與透明觀景球等造景，店內不只提供咖啡、特調飲品、輕食、甜點等下午茶，人氣招牌竟然是當日現烤的桶仔玉米雞套餐。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 老字號小吃</span>
+                        <a href="https://maps.app.goo.gl/WuvhaWFsGUMYiSZq8" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【正東山冰屋／美國油條】</div>
+                    <img src="images/cafe_06.jpg" id="cafe_06" class="spot-img" alt="正東山冰屋／美國油條" onclick="toggleGiftState('cafe_06')">
+                    <div class="spot-desc">位於台東市福建路，是陪伴許多老台東人長大的 50 年老字號冰菓室、營養三明治。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 海邊肉桂捲</span>
+                        <a href="https://maps.app.goo.gl/MH5T4aCBiKYpQmpA8" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【髒孩子工作室】</div>
+                    <img src="images/cafe_07.jpg" id="cafe_07" class="spot-img" alt="髒孩子工作室" onclick="toggleGiftState('cafe_07')">
+                    <div class="spot-desc">在海線旅人之間口耳相傳，被稱作「最溫柔的甜點據點」，推開門的瞬間，空氣裡瀰漫著肉桂與奶香，讓人立刻放慢了腳步。</div>
+                </div>
+				<div class="spot-card food">
+                    <div class="spot-header">
+                        <span class="spot-time food-tag">☕️ 偏鄉小孩溫暖咖啡屋</span>
+                        <a href="https://maps.app.goo.gl/Vv8mjMyFQT1FWhn87" target="_blank" class="map-link">📍 地圖</a></div>
+                    <div class="spot-title">【黑孩子黑咖啡】</div>
+                    <img src="images/cafe_08.jpg" id="cafe_08" class="spot-img" alt="黑孩子黑咖啡" onclick="toggleGiftState('cafe_08')">
+                    <div class="spot-desc">由公益團體「孩子的書屋」創辦人陳爸（陳俊朗）與在地青少年共同打造的咖啡館與職場育成中心。</div>
                 </div>
             </div>
 
             <!-- 子區塊 3: 購物 -->
             <div id="shopping-sub" class="sub-tab-content">
-                <div class="section-header-title">🛍️ 必逛購物地點</div>
+                <div class="section-header-title">🛍️ 推薦購物地點</div>
 
                 <div class="spot-card shopping">
                     <div class="spot-header">
-                        <span class="spot-time shop-tag">鹽業主題</span>
-                        <a href="https://maps.google.com/?q=Yukisio+Museum" target="_blank" class="map-link">📍 地圖導航</a>
+                        <span class="spot-time shop-tag">農特產與伴手禮</span>
+                        <a href="https://maps.app.goo.gl/F7ggYHE8CaP9RDn46" target="_blank" class="map-link">📍 地圖</a>
                     </div>
-                    <div class="spot-title">雪塩博物館</div>
-                    <img src="images/shop/shop_01.jpg" class="spot-img" alt="雪塩博物館">
-                    <div class="spot-desc">認識極細雪鹽製程，現場販售多元雪鹽商品、美妝品及招牌雪鹽霜淇淋。</div>
-                </div>
-
-                <div class="spot-card shopping">
-                    <div class="spot-header">
-                        <span class="spot-time shop-tag">折扣百貨</span>
-                        <a href="https://maps.google.com/?q=Don+Quijote+Miyakojima" target="_blank" class="map-link">📍 地圖導航</a>
-                    </div>
-                    <div class="spot-title">唐吉訶德 宮古島店</div>
-                    <img src="images/shop/shop_02.jpg" class="spot-img" alt="唐吉訶德">
-                    <div class="spot-desc">營業至深夜的大型賣場，一次採買齊全沖繩限定藥妝、零食與各類生活雜貨。</div>
+                    <div class="spot-title">台東農會</div>
+                    <img src="images/shop/shop_01.jpg" class="spot-img" alt="台東農會">
+                    <div class="spot-desc">每個農會都有其代表性的必買農特產與伴手禮，近年來，到台東旅遊時「狂掃農會超市」已成為許多遊客的必訪行程。</div>
                 </div>
 
                 <div class="spot-card shopping">
                     <div class="spot-header">
-                        <span class="spot-time shop-tag">生鮮超市</span>
-                        <a href="https://maps.google.com/?q=MaxValu+Miyako+Minami" target="_blank" class="map-link">📍 地圖導航</a>
+                        <span class="spot-time shop-tag">農特產與伴手禮</span>
+                        <a href="https://maps.app.goo.gl/mWnM9EuL9n84oMGP8" target="_blank" class="map-link">📍 地圖</a>
                     </div>
-                    <div class="spot-title">永旺宮古南購物中心 AEON TOWN</div>
-                    <img src="images/shop/shop_03.jpg" class="spot-img" alt="MaxValu超市">
-                    <div class="spot-desc">集結24H超市、藥妝、服飾與餐廳的綜合商圈，停車極為便利。</div>
+                    <div class="spot-title">池上直銷驛站</div>
+                    <img src="images/shop/shop_02.jpg" class="spot-img" alt="池上直銷驛站">
+                    <div class="spot-desc">提供多種當地農產品，包含不同種類的米、像「乖乖」這類的特色零食，以及獨特的在地農產。</div>
                 </div>
 
                 <div class="spot-card shopping">
                     <div class="spot-header">
-                        <span class="spot-time shop-tag">文青選物</span>
-                        <a href="https://maps.google.com/?q=Cross+Point+Market+Miyakojima" target="_blank" class="map-link">📍 地圖導航</a>
+                        <span class="spot-time shop-tag">農特產與伴手禮</span>
+                        <a href="https://maps.app.goo.gl/yHuud2ubFtmK6RFQ9" target="_blank" class="map-link">📍 地圖</a>
                     </div>
-                    <div class="spot-title">Cross Point Market</div>
-                    <img src="images/shop/shop_04.jpg" class="spot-img" alt="Cross Point Market">
-                    <div class="spot-desc">嚴選沖繩與宮古島質感雜貨、文創伴手禮、特色服飾及精緻紀念品。</div>
+                    <div class="spot-title">關山鎮農會超市</div>
+                    <img src="images/shop/shop_03.jpg" class="spot-img" alt="關山鎮農會超市">
+                    <div class="spot-desc">當地購買關山米、在地農特產與各式伴手禮的熱門地點，同時也提供豐富的生鮮蔬果及日常用品利。</div>
                 </div>
 
                 <div class="spot-card shopping">
                     <div class="spot-header">
-                        <span class="spot-time shop-tag">歷史商街</span>
-                        <a href="https://maps.google.com/?q=Nishizato+Street" target="_blank" class="map-link">📍 地圖導航</a>
+                        <span class="spot-time shop-tag">農特產與伴手禮</span>
+                        <a href="https://maps.app.goo.gl/zwQ3pocMgM7kMRfU7" target="_blank" class="map-link">📍 地圖</a>
                     </div>
-                    <div class="spot-title">西里大通街</div>
-                    <img src="images/shop/shop_05.jpg" class="spot-img" alt="西里大通街">
-                    <div class="spot-desc">市區熱鬧的商店街，集結在地手工藝品店、泡盛酒專賣店與特色居酒屋。</div>
+                    <div class="spot-title">瑞穗農會</div>
+                    <img src="images/shop/shop_04.jpg" class="spot-img" alt="瑞穗農會">
+                    <div class="spot-desc">品項非常的多，可以買到瑞穗當地名產，販賣環境非常的好，還有休息區。</div>
                 </div>
 
                 <div class="spot-card shopping">
                     <div class="spot-header">
-                        <span class="spot-time shop-tag">農特產集散</span>
-                        <a href="https://maps.google.com/?q=Shima+no+Eki+Miyako" target="_blank" class="map-link">📍 地圖導航</a>
+                        <span class="spot-time shop-tag">鐵道市集</span>
+                        <a href="https://maps.app.goo.gl/eaCEWg8aLrHQVmEW7" target="_blank" class="map-link">📍 地圖</a>
                     </div>
-                    <div class="spot-title">島之站宮古（島の駅みやこ）</div>
-                    <img src="images/shop/shop_06.jpg" class="spot-img" alt="島之站宮古">
-                    <div class="spot-desc">當地居民與遊客最愛的特產市場，產地直送新鮮芒果、火龍果與各種海島抹醬。</div>
+                    <div class="spot-title">鐵花村音樂聚落慢市集</div>
+                    <img src="images/shop/shop_05.jpg" class="spot-img" alt="鐵花村音樂聚落慢市集">
+                    <div class="spot-desc">為了整合舊鐵道月台、軌道景觀與大片綠地，台東縣政府已規劃全新的「鐵道市集」品牌重新啟動，提供更高品質的營運模式。</div>
                 </div>
 
                 <div class="spot-card shopping">
                     <div class="spot-header">
-                        <span class="spot-time shop-tag">生活雜貨</span>
-                        <a href="https://maps.google.com/?q=MUJI+Miyakojima+City" target="_blank" class="map-link">📍 地圖導航</a>
+                        <span class="spot-time shop-tag">文化園區</span>
+                        <a href="https://maps.app.goo.gl/vY8KQGrfnvxY2bQf7" target="_blank" class="map-link">📍 地圖</a>
                     </div>
-                    <div class="spot-title">無印良品 宮古島City店</div>
-                    <img src="images/shop/shop_07.jpg" class="spot-img" alt="無印良品宮古島">
-                    <div class="spot-desc">宮古島首家無印良品門市，極簡舒適空間，適合補給服飾、保養品與旅行雜物。</div>
+                    <div class="spot-title">都蘭新東糖廠文化園區</div>
+                    <img src="images/shop/shop_06.jpg" class="spot-img" alt="都蘭新東糖廠文化園區">
+                    <div class="spot-desc">前身為日治時期產量曾居全台領先的紅糖工廠，現已轉型為融合藝術、文創與咖啡館的休閒園區。</div>
                 </div>
 
-                <div class="spot-card shopping">
-                    <div class="spot-header">
-                        <span class="spot-time shop-tag">百元均一</span>
-                        <a href="https://maps.google.com/?q=DAISO+Miyako+Minami" target="_blank" class="map-link">📍 地圖導航</a>
-                    </div>
-                    <div class="spot-title">大創 DAISO 宮古南SC店</div>
-                    <img src="images/shop/shop_08.jpg" class="spot-img" alt="DAISO">
-                    <div class="spot-desc">品項齊全的百元商店，補充海邊玩水小物、收納袋與超值日本生活用品。</div>
-                </div>
-                
-                <div class="spot-card shopping">
-                    <div class="spot-header">
-                        <span class="spot-time shop-tag">香蕉伴手禮</span>
-                        <a href="https://maps.google.com/?q=Monte+Doll+Miyako" target="_blank" class="map-link">📍 地圖導航</a>
-                    </div>
-                    <div class="spot-title">Monte Doll (モンテドール)</div>
-                    <img src="images/shop/shop_09.jpg" class="spot-img" alt="Monte Doll">
-                    <div class="spot-desc">宮古島飄香數十年的經典伴手禮，使用天然香蕉烘焙，口感紮實濃郁。。</div>
-                </div>
-                
-                <div class="spot-card shopping">
-                    <div class="spot-header">
-                        <span class="spot-time shop-tag">機場限定</span>
-                        <a href="https://maps.google.com/?q=coral+port+the+Shop+Shimojishima" target="_blank" class="map-link">📍 地圖導航</a>
-                    </div>
-                    <div class="spot-title">下地島機場 coral port the Shop</div>
-                    <img src="images/shop/shop_10.jpg" class="spot-img" alt="coral port the Shop">
-                    <div class="spot-desc">渡假風質感航廈商店，販售獨家聯名商品、時尚配件與搭機前的特色紀念品。</div>
-                </div>
 			</div>
 			
 			<!-- 子區塊 4: 伴手禮 -->
@@ -1235,7 +1316,7 @@
                 <div class="souvenir-grid">
                     <div class="souvenir-card">
                         <img src="images/gift/gift_01.jpg" id="gift_1" class="souvenir-img" alt="台東米乖乖" onclick="toggleGiftState('gift_1')">
-                        <div class="souvenir-name">1. 台東米乖乖</div>
+                        <div class="souvenir-name">1. (農會)台東米乖乖</div>
                     </div>
                     <div class="souvenir-card">
                         <img src="images/gift/gift_02.jpg" id="gift_2" class="souvenir-img" alt="青澤琪瑪酥" onclick="toggleGiftState('gift_2')">
@@ -1270,56 +1351,68 @@
                         <div class="souvenir-name">9. 老東芳青草茶</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_10.jpg" id="gift_10" class="souvenir-img" alt="紅芋塔" onclick="toggleGiftState('gift_10')">
-                        <div class="souvenir-name">10. 紅芋塔 / 紅薯塔</div>
+                        <img src="images/gift/gift_10.jpg" id="gift_10" class="souvenir-img" alt="福和成封仔餅" onclick="toggleGiftState('gift_10')">
+                        <div class="souvenir-name">10. 福和成封仔餅</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_11.jpg" id="gift_11" class="souvenir-img" alt="Monte Doll香蕉蛋糕" onclick="toggleGiftState('gift_11')">
-                        <div class="souvenir-name">11. Monte Doll香蕉蛋糕</div>
+                        <img src="images/gift/gift_11.jpg" id="gift_11" class="souvenir-img" alt="永全花生酥" onclick="toggleGiftState('gift_11')">
+                        <div class="souvenir-name">11. 永全花生酥</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_12.jpg" id="gift_12" class="souvenir-img" alt="芒果夾心餅乾" onclick="toggleGiftState('gift_12')">
-                        <div class="souvenir-name">12. 芒果夾心餅乾</div>
+                        <img src="images/gift/gift_12.jpg" id="gift_12" class="souvenir-img" alt="歐巴螞寒單餅" onclick="toggleGiftState('gift_12')">
+                        <div class="souvenir-name">12. 歐巴螞寒單餅</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_13.jpg" id="gift_13" class="souvenir-img" alt="宮古島堅果" onclick="toggleGiftState('gift_13')">
-                        <div class="souvenir-name">13. 宮古島堅果酥</div>
+                        <img src="images/gift/gift_13.jpg" id="gift_13" class="souvenir-img" alt="烤玉米" onclick="toggleGiftState('gift_13')">
+                        <div class="souvenir-name">13. (農會)烤玉米</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_14.jpg" id="gift_14" class="souvenir-img" alt="守護君周邊" onclick="toggleGiftState('gift_14')">
-                        <div class="souvenir-name">14. 守護君周邊商品</div>
+                        <img src="images/gift/gift_14.jpg" id="gift_14" class="souvenir-img" alt="鯛魚酥" onclick="toggleGiftState('gift_14')">
+                        <div class="souvenir-name">14. (農會)鯛魚酥</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_15.jpg" id="gift_15" class="souvenir-img" alt="宮古島帆布袋" onclick="toggleGiftState('gift_15')">
-                        <div class="souvenir-name">15. 宮古島帆布袋</div>
+                        <img src="images/gift/gift_15.jpg" id="gift_15" class="souvenir-img" alt="柚子鹽爆米花" onclick="toggleGiftState('gift_15')">
+                        <div class="souvenir-name">15. (農會)柚子鹽爆米花</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_16.jpg" id="gift_16" class="souvenir-img" alt="宮古島磁鐵" onclick="toggleGiftState('gift_16')">
-                        <div class="souvenir-name">16. 宮古島磁鐵</div>
+                        <img src="images/gift/gift_16.jpg" id="gift_16" class="souvenir-img" alt="紅烏龍茶餅" onclick="toggleGiftState('gift_16')">
+                        <div class="souvenir-name">16. (農會)紅烏龍茶餅</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_17.jpg" id="gift_17" class="souvenir-img" alt="特色T-shirt" onclick="toggleGiftState('gift_17')">
-                        <div class="souvenir-name">17. 宮古島 T-shirt</div>
+                        <img src="images/gift/gift_17.jpg" id="gift_17" class="souvenir-img" alt="紅烏龍茶豆干" onclick="toggleGiftState('gift_17')">
+                        <div class="souvenir-name">17. (農會)紅烏龍茶豆干</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_18.jpg" id="gift_18" class="souvenir-img" alt="Blue Seal周邊" onclick="toggleGiftState('gift_18')">
-                        <div class="souvenir-name">18. Blue Seal 冰淇淋</div>
+                        <img src="images/gift/gift_18.jpg" id="gift_18" class="souvenir-img" alt="臭豆腐餅乾" onclick="toggleGiftState('gift_18')">
+                        <div class="souvenir-name">18. (農會)臭豆腐餅乾</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_19.jpg" id="gift_19" class="souvenir-img" alt="Orion周邊" onclick="toggleGiftState('gift_19')">
-                        <div class="souvenir-name">19. Orion 周邊商品</div>
+                        <img src="images/gift/gift_19.jpg" id="gift_19" class="souvenir-img" alt="乾拌麵" onclick="toggleGiftState('gift_19')">
+                        <div class="souvenir-name">19. (農會)乾拌麵</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_20.jpg" id="gift_20" class="souvenir-img" alt="曬黑 Hello Kitty" onclick="toggleGiftState('gift_20')">
-                        <div class="souvenir-name">20. 曬黑 Hello Kitty</div>
+                        <img src="images/gift/gift_20.jpg" id="gift_20" class="souvenir-img" alt="鬼頭刀爆米花" onclick="toggleGiftState('gift_20')">
+                        <div class="souvenir-name">20. (農會)鬼頭刀爆米花</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_21.jpg" id="gift_21" class="souvenir-img" alt="Hydro Flask水壺" onclick="toggleGiftState('gift_21')">
-                        <div class="souvenir-name">21. 下地島 Hydro Flask</div>
+                        <img src="images/gift/gift_21.jpg" id="gift_21" class="souvenir-img" alt="紅烏龍茶爆米花" onclick="toggleGiftState('gift_21')">
+                        <div class="souvenir-name">21. (農會)紅烏龍茶爆米花</div>
                     </div>
                     <div class="souvenir-card">
-                        <img src="images/gift/gift_22.jpg" id="gift_21" class="souvenir-img" alt="Hydro Flask水壺" onclick="toggleGiftState('gift_22')">
-                        <div class="souvenir-name">22. 下地島 Hydro Flask</div>
+                        <img src="images/gift/gift_22.jpg" id="gift_22" class="souvenir-img" alt="鬼頭刀魚片燒" onclick="toggleGiftState('gift_22')">
+                        <div class="souvenir-name">22. (農會)鬼頭刀魚片燒</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_23.jpg" id="gift_23" class="souvenir-img" alt="鬼頭刀魚酥" onclick="toggleGiftState('gift_23')">
+                        <div class="souvenir-name">23. (農會)鬼頭刀魚酥</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_24.jpg" id="gift_24" class="souvenir-img" alt="水果乾" onclick="toggleGiftState('gift_24')">
+                        <div class="souvenir-name">24. (農會)水果乾</div>
+                    </div>
+                    <div class="souvenir-card">
+                        <img src="images/gift/gift_25.jpg" id="gift_25" class="souvenir-img" alt="紅烏龍茶" onclick="toggleGiftState('gift_25')">
+                        <div class="souvenir-name">25. 紅烏龍茶</div>
                     </div>
                 </div>
             </div>
@@ -1404,15 +1497,15 @@
         <!-- ===== 準備 ===== -->
         <div id="checklist" class="tab-content">
             <div class="calc-card">
-                <div class="spot-title" style="margin-bottom: 16px;">📌 行前準備</div>
-				
-                <div class="check-group">
-                    <h4>行前準備事項</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="a1"><label for="a1">機票</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="a2"><label for="a2">訂房 (飯店 / 民宿)</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="a3"><label for="a3">機場接送服務</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="a4"><label for="a4">旅行平安險 / 旅行不便險</label></div>
-                </div>
+                <div class="spot-title" style="margin-bottom: 16px;">✈️ 國內飛機注意事項</div> 
+				<div class="notice-card">
+					<ul class="notice-list">
+						<li>攜帶與機票姓名相符、政府核發且有照片的身分證明文件（如身分證、健保卡、駕照）。</li>
+						<li>手提行李：每人限帶 1 件，重量限制通常為 7 公斤。</li>
+						<li>託運行李：經濟艙乘客享有 10 公斤免費託運額度。</li>
+						<li>液體限制：單瓶容器在 500 毫升以下，手提或託運總重不超過 2000 毫升。</li>
+					</ul>
+				</div>
 				
                 <div class="spot-title" style="margin-bottom: 16px;">✅ 行李 CHECKLIST</div>
                 
@@ -1420,16 +1513,18 @@
                     <h4>重要證件與卡片</h4>
                     <div class="checkbox-wrapper"><input type="checkbox" id="c1_1"><label for="c1_1">身分證 / 健保卡</label></div>
                     <div class="checkbox-wrapper"><input type="checkbox" id="c1_2"><label for="c1_2">台灣駕照正本</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_4"><label for="c1_4">信用卡 / 台幣現金</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c1_4"><label for="c1_4">信用卡 / 現金</label></div>
                 </div>
 
                 <div class="check-group">
-                    <h4>水上活動與穿搭</h4>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_1"><label for="c2_1">泳衣 / 水母衣 / 防曬衣</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_2"><label for="c2_2">防水袋 / 手機防水套</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_3"><label for="c2_3">海灘鞋</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_4"><label for="c2_4">海洋友善防曬乳 / 太陽眼鏡</label></div>
-                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_5"><label for="c2_5">毛巾 / 浴巾</label></div>
+                    <h4>十一月穿搭建議</h4>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_1"><label for="c2_1">薄長袖 / 防風小外套</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_2"><label for="c2_2">遮陽帽</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_3"><label for="c2_3">防曬乳 / 太陽眼鏡</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_4"><label for="c2_4">防蚊液</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_5"><label for="c2_5">涼鞋或拖鞋 (踏浪)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_6"><label for="c2_6">泳衣 / 泳帽 (大眾溫泉)</label></div>
+                    <div class="checkbox-wrapper"><input type="checkbox" id="c2_7"><label for="c2_7">小毛巾</label></div>
                 </div>
 
                 <div class="check-group">
