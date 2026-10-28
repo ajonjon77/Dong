@@ -1250,7 +1250,10 @@
             <div class="calc-card">
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
                     <div class="spot-title" style="margin-bottom: 0;">📋 全員共享消費明細</div>
-                    <button onclick="clearAllData()" style="padding: 4px 8px; background: #FEE2E2; color: #DC2626; border: none; border-radius: 4px; font-size: 11px; cursor: pointer;">清空所有帳目</button>
+                    <div style="display:flex; gap:6px;">
+                        <button onclick="openStatsModal()" style="padding: 4px 10px; background: var(--accent-ocean); color: white; border: none; border-radius: 4px; font-size: 11px; cursor: pointer; font-weight: 700;">📊 統計</button>
+                        <button onclick="clearAllData()" style="padding: 4px 8px; background: #FEE2E2; color: #DC2626; border: none; border-radius: 4px; font-size: 11px; cursor: pointer;">清空所有帳目</button>
+                    </div>
                 </div>
                 <div id="expenseList">載入中...</div>
 
@@ -1350,6 +1353,18 @@
             </div>
             <button class="btn-primary" onclick="saveScheduleItem()">儲存行程</button>
             <button type="button" onclick="closeScheduleModal()" style="width:100%; margin-top:8px; padding:10px; background:#94A3B8; color:white; border:none; border-radius:6px; font-size:13px; cursor:pointer;">取消</button>
+        </div>
+    </div>
+
+    <!-- 個人花費統計 Modal -->
+    <div id="statsModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:200; align-items:center; justify-content:center;">
+        <div style="background:white; width:90%; max-width:400px; padding:20px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.15); max-height:80vh; overflow-y:auto;">
+            <div class="spot-title" style="margin-bottom:12px; display:flex; justify-content:space-between; align-items:center;">
+                📊 個人花費統計
+                <button onclick="closeStatsModal()" style="background:none; border:none; font-size:18px; cursor:pointer; color:var(--text-secondary);">×</button>
+            </div>
+            <div id="statsContent" style="font-size:13px; color:var(--text-primary);">計算中...</div>
+            <button class="btn-primary" onclick="closeStatsModal()" style="margin-top:16px;">關閉</button>
         </div>
     </div>
 
@@ -2243,45 +2258,74 @@
             renderMembersUI();
         }
 
+        let personalSpentMap = {}; // 儲存計算好的個人花費，供統計 Modal 使用
+        let transferItemsList = []; // 儲存轉帳/還款項目
+
         function updateExpenseUI() {
             const listEl = document.getElementById('expenseList');
             if (expenses.length === 0) {
                 listEl.innerHTML = '<div style="color:var(--text-secondary); text-align:center; padding:12px 0;">尚無消費紀錄</div>';
                 document.getElementById('settlementDetails').innerText = '尚無消費紀錄。';
+                personalSpentMap = {};
+                transferItemsList = [];
                 return;
             }
 
             let html = '';
             let balances = {};
             members.forEach(m => balances[m] = 0);
+            
+            // 初始化個人花費統計物件與轉帳清單
+            personalSpentMap = {};
+            members.forEach(m => personalSpentMap[m] = { total: 0, items: [] });
+            transferItemsList = [];
 
             expenses.forEach((item, idx) => {
                 const totalTWD = item.amount;
                 const payer = item.payer;
                 const splitMembers = Array.isArray(item.members) ? item.members : item.members.split(',');
                 
+                // 檢查是否包含「還款」或「轉帳」字串
+                const isTransferOrRepayment = item.name.includes('還款') || item.name.includes('轉帳');
+
                 if (balances[payer] === undefined) balances[payer] = 0;
                 balances[payer] += totalTWD;
 
                 let detailDesc = '';
 
-                if (item.shares && Object.keys(item.shares).length > 0) {
-                    let shareStrs = [];
-                    Object.keys(item.shares).forEach(m => {
-                        const mAmount = item.shares[m];
-                        if (balances[m] === undefined) balances[m] = 0;
-                        balances[m] -= mAmount;
-                        shareStrs.push(`${m}: $${Math.round(mAmount)}`);
-                    });
-                    detailDesc = shareStrs.join(', ');
+                if (isTransferOrRepayment) {
+                    // 若為還款或轉帳，不計入一般旅遊個人花費，改記錄到轉帳清單中
+                    // 根據需求 2：payer 是付款人，members 是收款人，標示為 payer 付給 members
+                    const receiver = splitMembers.length > 0 ? splitMembers[0] : (item.members || '');
+                    transferItemsList.push({ name: item.name, payer: payer, receiver: receiver, amount: totalTWD, date: item.date });
+                    detailDesc = `現金交易 (獨立計算 ➔ <b>${payer}</b> 付給 <b>${receiver}</b>)`;
                 } else {
-                    const shareCount = splitMembers.length;
-                    const perShareTWD = shareCount > 0 ? (totalTWD / shareCount) : 0;
-                    splitMembers.forEach(m => {
-                        if (balances[m] === undefined) balances[m] = 0;
-                        balances[m] -= perShareTWD;
-                    });
-                    detailDesc = `均分: ${splitMembers.join(', ')} ( $${Math.round(perShareTWD)}/人)`;
+                    if (item.shares && Object.keys(item.shares).length > 0) {
+                        let shareStrs = [];
+                        Object.keys(item.shares).forEach(m => {
+                            const mAmount = item.shares[m];
+                            if (balances[m] === undefined) balances[m] = 0;
+                            balances[m] -= mAmount;
+                            shareStrs.push(`${m}: $${Math.round(mAmount)}`);
+
+                            if (!personalSpentMap[m]) personalSpentMap[m] = { total: 0, items: [] };
+                            personalSpentMap[m].total += mAmount;
+                            personalSpentMap[m].items.push({ name: item.name, amount: mAmount });
+                        });
+                        detailDesc = shareStrs.join(', ');
+                    } else {
+                        const shareCount = splitMembers.length;
+                        const perShareTWD = shareCount > 0 ? (totalTWD / shareCount) : 0;
+                        splitMembers.forEach(m => {
+                            if (balances[m] === undefined) balances[m] = 0;
+                            balances[m] -= perShareTWD;
+
+                            if (!personalSpentMap[m]) personalSpentMap[m] = { total: 0, items: [] };
+                            personalSpentMap[m].total += perShareTWD;
+                            personalSpentMap[m].items.push({ name: item.name, amount: perShareTWD });
+                        });
+                        detailDesc = `均分: ${splitMembers.join(', ')} ( $${Math.round(perShareTWD)}/人)`;
+                    }
                 }
 
                 let displayDate = item.date;
@@ -2323,6 +2367,67 @@
 
             listEl.innerHTML = html;
             calculateSettlement(balances);
+        }
+
+        function openStatsModal() {
+            const modal = document.getElementById('statsModal');
+            const contentEl = document.getElementById('statsContent');
+            
+            let html = '';
+            let grandTotal = 0;
+
+            members.forEach(m => {
+                const data = personalSpentMap[m] || { total: 0, items: [] };
+                grandTotal += data.total;
+                
+                html += `
+                    <div style="background:#F8FAFC; border:1px solid var(--border-light); border-radius:6px; padding:12px; margin-bottom:10px;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; font-weight:700; color:var(--accent-ocean); margin-bottom:6px; border-bottom:1px dashed var(--border-light); padding-bottom:4px;">
+                            <span>👤 ${m}</span>
+                            <span>NT$ ${Math.round(data.total).toLocaleString()}</span>
+                        </div>
+                `;
+
+                if (data.items.length === 0) {
+                    html += `<div style="font-size:12px; color:var(--text-secondary);">無分攤消費紀錄</div>`;
+                } else {
+                    html += `<ul style="padding-left:16px; font-size:12px; color:var(--text-secondary);">`;
+                    data.items.forEach(i => {
+                        html += `<li>${i.name}: NT$ ${Math.round(i.amount).toLocaleString()}</li>`;
+                    });
+                    html += `</ul>`;
+                }
+                html += `</div>`;
+            });
+
+            // 顯示轉帳/還款獨立區塊（不計入總消費與個人花費）
+            let transferHtml = '';
+            if (transferItemsList.length > 0) {
+                transferHtml += `
+                    <div style="background:#FFFBEB; border:1px solid #FDE68A; border-radius:6px; padding:12px; margin-top:16px; margin-bottom:10px;">
+                        <div style="font-weight:700; color:#B45309; margin-bottom:6px; border-bottom:1px dashed #FDE68A; padding-bottom:4px;">
+                            💸 私人現金交易 (轉帳/還款 - 獨立計算)
+                        </div>
+                        <ul style="padding-left:16px; font-size:12px; color:#92400E;">
+                `;
+                transferItemsList.forEach(t => {
+                    transferHtml += `<li>${t.name}: <b>${t.payer}</b> 付給 <b>${t.receiver}</b> NT$ ${Math.round(t.amount).toLocaleString()}</li>`;
+                });
+                transferHtml += `</ul></div>`;
+            }
+
+            if (expenses.length === 0) {
+                html = '<div style="text-align:center; color:var(--text-secondary); padding:20px 0;">目前尚無任何消費紀錄。</div>';
+            } else {
+                html = `<div style="font-weight:700; margin-bottom:12px; color:var(--text-primary);">總消費金額：NT$ ${Math.round(grandTotal).toLocaleString()}</div>` + html + transferHtml;
+            }
+
+            contentEl.innerHTML = html;
+            modal.style.display = 'flex';
+        }
+
+        function closeStatsModal() {
+            document.getElementById('statsModal').style.display = 'none';
         }
 
         function calculateSettlement(balances) {
